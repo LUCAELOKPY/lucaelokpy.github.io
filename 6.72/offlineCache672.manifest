@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# v2.8 - كاش لوكا كافيه المصفى المباشر
+# v3.7 - Subfolder 6.72 Local Cache
 
 6.72.html
-common/functions.js
-common/exploit.js
-jb/jb.js
-payloads/goldhen.js
+../common/functions.js
+../common/exploit.js
+../jb/jb.js
+../payloads/goldhen.js
 
 NETWORK:
 *
