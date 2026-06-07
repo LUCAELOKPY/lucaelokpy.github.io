@@ -98,9 +98,9 @@
     <h1 class="titlehead">لوكا كافيه وبلايستيشن 🎮</h1>
     <div class="sub-title">نظام تفعيل تعديلة سوفت وير 6.72</div>
     
-    <div id="progress" class="status-box">جاهز للتفعيل... إضغط على الزر بالأسفل</div>
+    <div id="progress" class="status-box">جاري فحص ملفات التشغيل...</div>
 
-    <button class="button" onclick="startGoldhenActivation(); return false">تفعيل GoldHEN المباشر</button>
+    <button class="button" onclick="load_Both(); return false">تفعيل GoldHEN المباشر</button>
 
     <div class="stats">
         <span id="success" class="success-stat">نجاح: 0</span>
@@ -110,71 +110,6 @@
     <footer>لوكا كافيه وبلايستيشن - قنا قوص &copy; 2026</footer>
 </div>
 
-<script src="common/functions.js"></script>
-<script>function print(){}</script>
-<script src="common/exploit.js"></script>
-<script src="jb/jb.js"></script>
-
 <script>
-    // تهيئة عدادات التفعيل من ذاكرة المتصفح المحلية عند فتح الصفحة
     window.onload = function(e){
-        if(localStorage.Fail == null){ localStorage.Fail = 0; localStorage.Success = 0; }
-        document.getElementById("success").innerHTML = "نجاح: " + localStorage.Success;
-        document.getElementById("fail").innerHTML = "فشل: " + localStorage.Fail;
-    }
-
-    // إدارة ملفات الأوفلاين كاش والتخزين الذكي لجهاز PS4
-    window.applicationCache.onchecking = function() { document.getElementById("progress").innerHTML = "جاري فحص ملفات السيرفر..."; };
-    window.applicationCache.ondownloading = function() { document.getElementById("progress").innerHTML = "جاري تحميل ملفات الأوفلاين للعمل بدون إنترنت..."; };
-    window.applicationCache.onprogress = function(a) { document.getElementById("progress").innerHTML = "جاري التخزين المحلي: " + (Math.round(100 * (a.loaded / a.total))) + "%" };
-    window.applicationCache.oncached = function() { document.getElementById("progress").innerHTML = "تم حفظ التعديل بنجاح! افصل كابل النت وافتح المتصفح أوفلاين."; };
-    window.applicationCache.onupdateready = function() { window.applicationCache.swapCache(); window.location.reload(); };
-    window.applicationCache.onnoupdate = function() { document.getElementById("progress").innerHTML = "جاهز للتفعيل الفوري (تم الكاش مسبقاً) 🚀"; };
-    window.applicationCache.onerror = function() { document.getElementById("progress").innerHTML = "تنبيه: تعمل الآن في الوضع المحلي/أوفلاين."; };
-
-    // دالة التشغيل الذكية التي تمنع التجميد وتعالج الحقن بالترتيب
-    function startGoldhenActivation() {
-        document.getElementById("progress").innerHTML = "جاري تهيئة ذاكرة المعالج وتشغيل الجيلبريك...";
-        
-        setTimeout(function(){
-            try {
-                // خطوة 1: استدعاء دالة الجيلبريك الأساسية الممررة من jb.js
-                if (typeof jb === "function") {
-                    
-                    // خطوة 2: إنشاء عنصر تحميل ديناميكي لملف payloads/goldhen.js
-                    var script = document.createElement('script');
-                    script.src = "payloads/goldhen.js";
-                    
-                    script.onload = function() {
-                        document.getElementById("progress").innerHTML = "جاري حقن بايتات الـ GoldHEN... انتظر رسالة النجاح.";
-                        
-                        // خطوة 3: تشغيل التعديل الفعلي وتحديث العداد في حالة النجاح
-                        setTimeout(function(){
-                            localStorage.Success = parseInt(localStorage.Success) + 1;
-                            document.getElementById("success").innerHTML = "نجاح: " + localStorage.Success;
-                            document.getElementById("progress").innerHTML = "تم التفعيل بنجاح! انتظر ظهور إشعار GoldHEN على الشاشة ثم اخرج.";
-                        }, 1500);
-                    };
-                    
-                    script.onerror = function() {
-                        localStorage.Fail = parseInt(localStorage.Fail) + 1;
-                        document.getElementById("fail").innerHTML = "فشل: " + localStorage.Fail;
-                        document.getElementById("progress").innerHTML = "خطأ: لم يتم العثور على ملف payloads/goldhen.js في مستودعك.";
-                    };
-                    
-                    // إدراج السكريبت لبدء التنفيذ الفوري
-                    document.body.appendChild(script);
-                    
-                } else {
-                    document.getElementById("progress").innerHTML = "خطأ: دالة jb() غير معرفة، تأكد من سلامة ملف jb.js";
-                }
-            } catch(err) {
-                localStorage.Fail = parseInt(localStorage.Fail) + 1;
-                document.getElementById("fail").innerHTML = "فشل: " + localStorage.Fail;
-                document.getElementById("progress").innerHTML = "حدث تعليق بالذاكرة الكاش: " + err.message + ". أعد فتح المتصفح.";
-            }
-        }, 600); // مهلة أمان مخصصة لمنع الـ Kernel Panic والـ Freeze
-    }
-</script>
-</body>
-</html>
+        if(localStorage.Fail==null
