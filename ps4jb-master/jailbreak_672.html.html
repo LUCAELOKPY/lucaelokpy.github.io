@@ -176,7 +176,6 @@
             updateClock();
             setInterval(updateClock, 1000);
 
-            // تعديل المسار هنا لطلب الملف الفعلي داخل مجلد الـ 6.72 التلقائي عند استمرار العملية
             if(localStorage.getItem("jb_running") === "true") {
                 showLoader();
                 startWatchdog();
@@ -216,7 +215,6 @@
             localStorage.setItem("jb_step", "1"); 
             
             startWatchdog();
-            // تعديل مسار الـ iframe هنا لتشغيل ملف الثغرة الأصلي لـ 6.72 (مثل kex_672.html أو index_old.html حسب الهاست اللي بتستخدمه)
             document.getElementById("jailbreak-frame").src = "kex_672.html?auto=true";
         }
 
@@ -264,14 +262,13 @@
                 <p id="status-text" style="color: #ffb84d; font-size: 1.2rem; font-weight: bold;">جاري كسر حماية النظام وحقن الـ GoldHEN صامتاً... لا تغلق الصفحة</p>
             </div>
             
-            <!-- زر العودة لـ index.html المضافة حديثاً -->
+            <!-- تم تعديل مسار الزر هنا ليعود خطوة للخلف لفتح الصفحة الرئيسية للاستضافة بنجاح -->
             <div>
-                <a href="index.html" class="btn-back">⬅️ العودة للقائمة الرئيسية</a>
+                <a href="../index.html" class="btn-back">⬅️ العودة للقائمة الرئيسية</a>
             </div>
         </div>
     </div>
 
-    <!-- الـ iframe الموجه لملف تشغيل الثغرة الفعلي -->
     <iframe id="jailbreak-frame" src=""></iframe>
 
     <footer>
