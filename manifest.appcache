@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# v1.0 - 2026-06-07
+
+CACHE:
+# صفحات الـ HTML
+index.html
+
+# صفحات التعديل التي يستدعيها الكود
+PSFree-main/psfree.html
+
+NETWORK:
+*
