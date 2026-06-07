@@ -1,0 +1,12 @@
+CACHE MANIFEST
+# v2.5 - لوكا كافيه تشغيل فقط 2026
+
+index672.html
+ps4.jpg
+common/functions.js
+common/exploit.js
+jb/jb.js
+payloads/goldhen.js
+
+NETWORK:
+*
