@@ -1,14 +1,10 @@
 CACHE MANIFEST
-# v3.7 - Luca Cafe Total Cache 2026
+# v4.1 - Luca Cafe Total Fixed Cache
 
 CACHE:
 index.html
 6.72/6.72.html
 PSFree-main/psfree.html
-common/functions.js
-common/exploit.js
-jb/jb.js
-payloads/goldhen.js
 
 NETWORK:
 *
