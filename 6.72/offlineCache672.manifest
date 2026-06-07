@@ -1,11 +1,11 @@
 CACHE MANIFEST
-# v3.7 - Subfolder 6.72 Local Cache
+# v4.0 - Luca Cafe Fixed Offline
 
 6.72.html
-../common/functions.js
-../common/exploit.js
-../jb/jb.js
-../payloads/goldhen.js
+https://lucaelokpy.github.io/common/functions.js
+https://lucaelokpy.github.io/common/exploit.js
+https://lucaelokpy.github.io/jb/jb.js
+https://lucaelokpy.github.io/payloads/goldhen.js
 
 NETWORK:
 *
