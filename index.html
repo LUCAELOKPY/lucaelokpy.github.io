@@ -1,86 +1,142 @@
+```html
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" manifest="manifest.appcache">
+<html lang="ar" dir="rtl" manifest="offlineCache672.manifest">
 <head>
-    <meta charset="utf-8"/>
-    <title>لوكا كافيه وبلايستيشن - قائمة التعديلات</title>
-    <style>
-        body {
-            background-color: #0b0e14;
-            color: white;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: #161b22;
-            border: 2px solid #30363d;
-            border-radius: 12px;
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        .titlehead {
-            color: #ffb84d;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-        }
-        .button {
-            background: linear-gradient(45deg, #0052d4, #4364f7);
-            border: none;
-            border-radius: 6px;
-            color: white;
-            padding: 18px 30px;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: bold;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            cursor: pointer;
-            margin-bottom: 15px;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 10px rgba(0, 82, 212, 0.4);
-        }
-        .button:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(45deg, #007bff, #00f0ff);
-        }
-        footer {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            color: #8b949e;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LUCA PlayStation & Cafe - حسين العقبى</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0b0e14;
+    color:#fff;
+    font-family:'Segoe UI',Tahoma,sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:550px;
+    background:#161b22;
+    border:2px solid #30363d;
+    border-radius:15px;
+    padding:40px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(0,0,0,.5);
+}
+
+.titlehead{
+    font-size:2rem;
+    color:#ffd700;
+    margin-bottom:10px;
+}
+
+.owner{
+    color:#00f0ff;
+    font-size:1rem;
+    margin-bottom:25px;
+}
+
+.subtitle{
+    color:#8b949e;
+    margin-bottom:30px;
+    font-size:15px;
+}
+
+.button{
+    display:block;
+    width:100%;
+    border:none;
+    cursor:pointer;
+    margin-bottom:15px;
+    padding:18px;
+    font-size:18px;
+    font-weight:bold;
+    border-radius:8px;
+    color:white;
+    background:linear-gradient(45deg,#0052d4,#4364f7);
+    transition:.3s;
+    box-shadow:0 4px 10px rgba(0,82,212,.4);
+}
+
+.button:hover{
+    transform:translateY(-3px);
+    background:linear-gradient(45deg,#007bff,#00f0ff);
+}
+
+.footer{
+    margin-top:25px;
+    color:#8b949e;
+    font-size:13px;
+    border-top:1px solid #30363d;
+    padding-top:15px;
+}
+
+.version{
+    margin-top:10px;
+    color:#2ecc71;
+    font-weight:bold;
+}
+</style>
+
 </head>
 <body>
 
 <div class="container">
-    <h1 class="titlehead">لوكا كافيه وبلايستيشن 🎮</h1>
-    
-    <!-- أزرار التوجيه المباشرة والنظيفة -->
-    <button class="button" onclick="launch_672(); return false;">تفعيل سوفت وير 6.72</button>
-    <button class="button" onclick="launch_900(); return false;">تفعيل سوفت وير 9.00 (PSFree)</button>
 
-    <footer>لوكا كافيه وبلايستيشن - قنا قوص &copy; 2026</footer>
+    <h1 class="titlehead">🎮 LUCA PlayStation & Cafe</h1>
+
+    <div class="owner">
+        حسين العقبى
+    </div>
+
+    <div class="subtitle">
+        منصة تشغيل الجيلبريك والتعديلات
+    </div>
+
+    <button class="button" onclick="launch_672()">
+        PS4 Firmware 6.72
+    </button>
+
+    <button class="button" onclick="launch_900()">
+        PS4 Firmware 9.00 (PSFree)
+    </button>
+
+    <div class="version">
+        LUCA Edition 2026
+    </div>
+
+    <div class="footer">
+        لوكا كافيه وبلايستيشن - قنا قوص
+        <br>
+        © 2026 Hussein Elokpy
+    </div>
+
 </div>
 
 <script>
-    // الدوال المسؤولة عن التوجيه الصحيح بدون تكرار مسارات
-    function launch_672() {
-        window.location.href = '6.72/6.72.html';
-    }
 
-    function launch_900() {
-        window.location.href = 'PSFree-main/psfree.html';
-    }
+function launch_672(){
+    window.location.href="6.72/6.72.html";
+}
+
+function launch_900(){
+    window.location.href="PSFree-main/psfree.html";
+}
+
 </script>
 
 </body>
 </html>
+```
