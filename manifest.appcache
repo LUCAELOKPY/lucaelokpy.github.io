@@ -1,15 +1,42 @@
+```text
 CACHE MANIFEST
-# v4.3 - Added Hen Path
+# LUCA Edition v5.0
 
 CACHE:
+
 index.html
+
 6.72/6.72.html
+6.72/ps4.jpg
+
 6.72/common/functions.js
 6.72/common/exploit.js
+
 6.72/jb/jb.js
+6.72/jb/oldjb.js
+
 6.72/payloads/goldhen.js
 6.72/payloads/hen.js
+6.72/payloads/mirahen.js
+6.72/payloads/miraunofficial.js
+6.72/payloads/preloader.js
+6.72/payloads/loader.js
+6.72/payloads/app2usb.js
+6.72/payloads/backup.js
+6.72/payloads/disableupdates.js
+6.72/payloads/dumper.js
+6.72/payloads/enableupdates.js
+6.72/payloads/ftp.js
+6.72/payloads/kerneldumper.js
+6.72/payloads/restore.js
+6.72/payloads/linuxloader.js
+6.72/payloads/todex.js
+6.72/payloads/webrte.js
+6.72/payloads/fanthreshold.js
+6.72/payloads/ps4debug.js
+
 PSFree-main/psfree.html
 
 NETWORK:
 *
+```
