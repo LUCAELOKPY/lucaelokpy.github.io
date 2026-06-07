@@ -1,12 +1,13 @@
 CACHE MANIFEST
-# v6.0 - Luca Cafe Local Cache Fixed
+# v5.1 - Luca Cafe Local Paths Fixed
 
 CACHE:
 6.72.html
-common/functions.js
-common/exploit.js
-jb/jb.js
-payloads/goldhen.js
+../common/functions.js
+../common/exploit.js
+../jb/jb.js
+../payloads/goldhen.js
+../payloads/hen.js
 
 NETWORK:
 *
