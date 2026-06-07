@@ -1,144 +1,95 @@
-<html manifest="offlineCache672.manifest">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" manifest="manifest.appcache">
 <head>
-<title>PS4 Jailbreak 6.72</title>
-<meta charset="utf-8"/>
-<style>
-.button {
-  background-color: #003263;  
-  border-radius: 5px;
-  color: white;
-  padding: .5em;
-  text-decoration: none;
-  height:100%;
-  display:inline-table;
-  font-family: system-ui;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوكا كافيه وبلايستيشن - قنا قوص</title>
+    
+    <style>
+        body { background-color: #0b0e14; color: #ffffff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .container { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .info-bar { background: rgba(22, 27, 34, 0.8); border: 1px solid #30363d; border-radius: 30px; padding: 10px 25px; margin-bottom: 20px; display: flex; gap: 30px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h1 { color: #ffb84d; font-size: 2.8rem; margin-bottom: 5px; }
+        .sub-owner { color: #00f0ff !important; font-weight: bold; font-size: 1.3rem; }
+        .selection-box { background-color: #161b22; border: 2px solid #30363d; border-radius: 12px; padding: 30px; width: 90%; max-width: 700px; text-align: center; }
+        .buttons-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .fw-card { background: #21262d; border: 1px solid #444c56; border-radius: 8px; padding: 20px; width: 240px; transition: transform 0.2s; }
+        .fw-card:hover { transform: translateY(-5px); border-color: #ffb84d; }
+        .btn-exploit { width: 100%; padding: 12px 20px; font-size: 1.1rem; font-weight: bold; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+        .btn-672 { background: linear-gradient(45deg, #0052d4, #4364f7); }
+        .btn-900 { background: linear-gradient(45deg, #f12711, #f5af19); }
+        footer { background-color: #161b22; text-align: center; padding: 15px; color: #8b949e; border-top: 1px solid #30363d; margin-top: auto; }
+        .cache-notice { color: #00f0ff; margin-top: 15px; font-size: 1rem; font-weight: bold; }
+    </style>
 
-.button:focus,
-.button:hover {
-  background-color: #007bff;
-  color: White;
-}
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('live-date').innerText = now.toLocaleDateString('ar-EG', options);
+            document.getElementById('live-time').innerText = now.toLocaleTimeString('ar-EG');
+        }
 
-.titlehead {
-  background-color: #003263;  
-  border-radius: 5px;
-  color: white;
-  padding: .5em;
-  text-decoration: none;
-  text-align: center;
-  margin-top: -10px;
-  margin-bottom: -10px;
-  font-family: system-ui;
-}
+        window.onload = function() {
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            if (window.applicationCache) {
+                window.applicationCache.addEventListener('cached', function() {
+                    document.getElementById('cache-status').innerText = "تم حفظ كاش النظام بالكامل (6.72 و 9.00) أوفلاين! ✅";
+                }, false);
+                
+                window.applicationCache.addEventListener('updateready', function() {
+                    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                        window.applicationCache.swapCache();
+                        window.location.reload();
+                    }
+                }, false);
+            }
+        };
 
-.titlehead:focus,
-.titlehead:hover {
-  background-color: #007bff;
-  color: White;
-}
+        // التعديل الجديد: التوجه مباشرة إلى صفحة 6.72.html المرفوعة في المستودع
+        function launch_672() {
+            window.location.href = '6.72.html';
+        }
 
-.bg {
-  /* The image used */
-  background-image: url("ps4.jpg");
+        // التوجه لمجلد 9.00 المحلي
+        function launch_900() {
+            window.location.href = 'PSFree-main/psfree.html'; 
+        }
+    </script>
+</head>
+<body>
 
-  
+    <div class="container">
+        <div class="info-bar">
+            <div>📍 قنا - قوص</div>
+            <div>📅 <span id="live-date">...</span></div>
+            <div>⏰ <span id="live-time">...</span></div>
+        </div>
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-</style></head>
-<body class="bg">
-<script>
-  window.onload = function(e){if(localStorage.Fail==null){localStorage.Fail=0;localStorage.Success=0;}
-  document.getElementById("success").innerHTML="Success: "+localStorage.Success;
-  document.getElementById("fail").innerHTML="Fail: "+localStorage.Fail;}
-  window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="Page Caching Started!!"};
-  window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML="Caching Status: "+(Math.round(100*(a.loaded/a.total)))+"% Completed"};
-  window.applicationCache.oncached=function(){document.getElementById("progress").innerHTML="Page Cached Successfully!!";setTimeout(function(){document.getElementById("progress").innerHTML="Turn Off the Internet & Reopen the Page to Run the Exploit!!"; }, 1500);};
-</script>
-<script src="common/functions.js"></script>
-<script>function print(){}</script>
-<script src="common/exploit.js"></script>
-<script src="jb/jb.js"></script>
-<script src="jb/oldjb.js"></script>
-<script src="payloads/app2usb.js"></script>
-<script src="payloads/backup.js"></script>
-<script src="payloads/preloader.js"></script>
-<script src="payloads/loader.js"></script>
-<script src="payloads/disableupdates.js"></script>
-<script src="payloads/dumper.js"></script>
-<script src="payloads/enableupdates.js"></script>
-<script src="payloads/fanthreshold.js"></script>
-<script src="payloads/ftp.js"></script>
-<script src="payloads/hen.js"></script>
-<script src="payloads/kerneldumper.js"></script>
-<script src="payloads/linuxloader.js"></script>
-<script src="payloads/mirahen.js"></script>
-<script src="payloads/goldhen.js"></script>
-<script src="payloads/miraunofficial.js"></script>
-<script src="payloads/ps4debug.js"></script>
-<script src="payloads/restore.js"></script>
-<script src="payloads/todex.js"></script>
-<script src="payloads/webrte.js"></script>
-<script>setTimeout(function(){document.getElementById("log").innerHTML="fake_vtable: "+fake_vtable.toString()+"  saveall_addr: "+saveall_addr.toString()+"  fake_vt_ptr_bak: "+fake_vt_ptr_bak.toString()+"  pivot_addr: "+pivot_addr.toString()+"  fake_vt_ptr: "+fake_vt_ptr.toString();},500);</script>
-<h1 id="progress" class="titlehead">PS4 Jailbreak 6.72</h1><hr><br>
-<div id="log" style="display:none;"></div>
-<span id="success" style="background-color:limegreen;color:black;" class="titlehead"></span>&nbsp;&nbsp;&nbsp;&nbsp;
-<span id="fail" style="background-color:firebrick;color:black;" class="titlehead"></span>
-<div>
-<table align="center" style="width:600px;margin-top:30px;">
-<tr>
-<td align="center" id="exploit" colspan="2">
-<a href="#" class="button" onclick="load_OLDJB(); return false" style="width:28%">Old Exploit</a>
-<a href="#" class="button" onclick="load_Both(); return false" style="width:28%">Exploit + GoldHEN</a>
-<a href="#" class="button" onclick="load_JB(); return false" style="width:28%">New Exploit</a>
-</td>
-<td align="center" id="jailbreak" colspan="2" style="display:none"><a href="#" class="button" onclick="load_payload('goldhen'); return false" style="width:28%">GoldHEN</a>
-<a href="#" class="button" onclick="load_payload('hen'); return false" style="width:28%">HEN</a>
-<a href="#" class="button" onclick="load_payload('miraunofficial'); return false" style="width:28%">MIRA UnOfficial</a>
-</td>
-</tr>
-<tr><td><br/></td></tr>
-<tr>
-<td colspan="2" align="center"><hr><br></td>
-</tr>
-<tr>
-<td align="center" colspan="2"><a href="#" class="button" onclick="load_payload('app2usb'); return false" style="width:43%">App2USB</a>
-<a href="#" class="button" onclick="load_payload('binloader'); return false" style="width:43%">Bin Loader</a></td>
-</tr><tr><td><br/></td></tr>
-<tr>
-<td align="center" colspan="2"><a href="#" class="button" onclick="load_payload('disableupdates'); return false" style="width:43%">Disable Updates</a>
-<a href="#" class="button" onclick="load_payload('enableupdates'); return false" style="width:43%">Enable Updates</a></td>
-</tr><tr><td><br/></td></tr>
-<tr>
-<td align="center" colspan="2"><a href="#" class="button" onclick="load_payload('dumper'); return false" style="width:43%">Dumper</a>
-<a href="#" class="button" onclick="load_payload('kerneldumper'); return false" style="width:43%">Kernel Dumper</a></td>
-</tr><tr><td><br/></td></tr>
-<tr>
-<tr>
-<td align="center" colspan="2">
-<a href="#" class="button" onclick="load_payload('restore'); return false" style="width:43%">Restore</a>
-<a href="#" class="button" onclick="load_payload('fanthreshold'); return false" style="width:43%;border-radius: 5px 0px 0px 5px;">Set Fan Threshold</a>
-<select id="temp" style="height:42px;border-radius: 0px 5px 5px 0px;position: absolute;" class="button">
-<option value="40">40°C</option><option value="41">41°C</option><option value="42">42°C</option><option value="43">43°C</option><option value="44">44°C</option><option value="45">45°C</option><option value="46">46°C</option><option value="47">47°C</option><option value="48">48°C</option><option value="49">49°C</option><option value="50">50°C</option><option value="51">51°C</option><option value="52">52°C</option><option value="53">53°C</option><option value="54">54°C</option><option value="55">55°C</option><option value="56">56°C</option><option value="57">57°C</option><option value="58">58°C</option><option value="59">59°C</option><option value="60">60°C</option><option value="61">61°C</option><option value="62">62°C</option><option value="63">63°C</option><option value="64">64°C</option><option value="65">65°C</option><option value="66">66°C</option><option value="67">67°C</option><option value="68">68°C</option><option value="69">69°C</option><option value="70" selected>70°C</option><option value="71">71°C</option><option value="72">72°C</option><option value="73">73°C</option><option value="74">74°C</option><option value="75">75°C</option><option value="76">76°C</option><option value="77">77°C</option><option value="78">78°C</option><option value="79">79°C</option>
-</select>
-</td>
-</tr><tr><td><br/></td></tr>
-<tr>
-<td align="center" colspan="2"><a href="#" class="button" onclick="load_payload('ftp'); return false" style="width:43%">FTP</a>
-<a href="#" class="button" onclick="load_payload('backup'); return false" style="width:43%">BackUp</a></td>
-</tr><tr><td><br/></td></tr>
-<tr>
-<td align="center" colspan="2"><a href="#" class="button" onclick="load_payload('todex'); return false" style="width:43%">To-DEX</a>
-<a href="#" class="button" onclick="load_payload('webrte'); return false" style="width:43%">WebRTE</a></td>
-</tr><tr><td><br/></td></tr>
-<tr>
-<td align="center" colspan="2"><a href="#" class="button" onclick="load_payload('linuxloader'); return false" style="width:43%">Linux Loader</a>
-<a href="#" class="button" onclick="load_payload('ps4debug'); return false" style="width:43%">PS4 Debug</a></td>
-</tr>
-</table></div>
+        <div class="header">
+            <h1>لوكا كافيه وبلايستيشن 🎮</h1>
+            <p class="sub-owner">إشراف وتطوير: حسين العقبي</p>
+        </div>
+
+        <div class="selection-box">
+            <div class="buttons-grid">
+                <div class="fw-card">
+                    <div style="margin-bottom:15px; font-weight:bold;">Firmware 6.72</div>
+                    <button class="btn-exploit btn-672" onclick="launch_672()">تفعيل 6.72 الاقتصادي</button>
+                </div>
+
+                <div class="fw-card">
+                    <div style="margin-bottom:15px; font-weight:bold;">Firmware 9.00</div>
+                    <button class="btn-exploit btn-900" onclick="launch_900()">تفعيل 9.00 الذكي</button>
+                </div>
+            </div>
+            <div id="cache-status" class="cache-notice">جاري التحقق من حفظ ملفات الأوفلاين...</div>
+        </div>
+    </div>
+
+    <footer>جميع الحقوق محفوظة &copy; 2026 | إدارة الأستاذ حسين العقبي</footer>
 </body>
 </html>
