@@ -98,7 +98,7 @@
     <h1 class="titlehead">لوكا كافيه وبلايستيشن 🎮</h1>
     <div class="sub-title">نظام تفعيل تعديلة سوفت وير 6.72</div>
     
-    <div id="progress" class="status-box">جاري فحص ملفات التشغيل...</div>
+    <div id="progress" class="status-box">جاهز للتفعيل... إختر من الأسفل</div>
 
     <button class="button" onclick="load_Both(); return false">تفعيل GoldHEN المباشر</button>
 
@@ -110,27 +110,52 @@
     <footer>لوكا كافيه وبلايستيشن - قنا قوص &copy; 2026</footer>
 </div>
 
-<script>
-    window.onload = function(e){
-        if(localStorage.Fail==null){localStorage.Fail=0;localStorage.Success=0;}
-        document.getElementById("success").innerHTML="نجاح: "+localStorage.Success;
-        document.getElementById("fail").innerHTML="فشل: "+localStorage.Fail;
-    }
-    window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="جاري بدء حفظ كاش التعديل..."};
-    window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML="جاري التحميل الأوفلاين: "+(Math.round(100*(a.loaded/a.total)))+"%"};
-    window.applicationCache.oncached=function(){
-        document.getElementById("progress").innerHTML="تم حفظ التعديل بنجاح! افصل النت وشغل أوفلاين.";
-    };
-    window.applicationCache.onupdateready=function(){
-        window.applicationCache.swapCache();
-        window.location.reload();
-    };
-</script>
-
 <script src="common/functions.js"></script>
 <script>function print(){}</script>
-<script src="payloads/goldhen.js"></script>
 <script src="common/exploit.js"></script>
 <script src="jb/jb.js"></script>
+
+<script>
+    // تهيئة عداد النجاح والفشل عند تحميل الصفحة
+    window.onload = function(e){
+        if(localStorage.Fail == null){ localStorage.Fail = 0; localStorage.Success = 0; }
+        document.getElementById("success").innerHTML = "نجاح: " + localStorage.Success;
+        document.getElementById("fail").innerHTML = "فشل: " + localStorage.Fail;
+    }
+
+    // إدارة نظام الأوفلاين كاش وعداد النسبة المئوية
+    window.applicationCache.onchecking = function() { document.getElementById("progress").innerHTML = "جاري فحص التحديثات..."; };
+    window.applicationCache.ondownloading = function() { document.getElementById("progress").innerHTML = "جاري بدء حفظ كاش التعديل..." };
+    window.applicationCache.onprogress = function(a) { document.getElementById("progress").innerHTML = "جاري التحميل الأوفلاين: " + (Math.round(100 * (a.loaded / a.total))) + "%" };
+    window.applicationCache.oncached = function() { document.getElementById("progress").innerHTML = "تم حفظ التعديل بنجاح! افصل النت وشغل أوفلاين."; };
+    window.applicationCache.onupdateready = function() { window.applicationCache.swapCache(); window.location.reload(); };
+    window.applicationCache.onnoupdate = function() { document.getElementById("progress").innerHTML = "جاهز للتفعيل أوفلاين (تم حفظ الكاش)."; };
+    window.applicationCache.onerror = function() { document.getElementById("progress").innerHTML = "تعمل الآن في وضع الأوفلاين المحلي."; };
+
+    // الدالة التشغيلية للزر لمنع تجميد المتصفح أثناء الحقن
+    function load_Both() {
+        document.getElementById("progress").innerHTML = "جاري تشغيل الجيلبريك وحقن الثغرة... انتظر ثواني";
+        
+        // تعيين المسار لملف الـ Payload لتقرأه ملفات jb.js تلقائياً
+        window.targetPayload = "payloads/goldhen.js";
+        
+        setTimeout(function(){
+            try {
+                // استدعاء ملف الـ Payload وحقنه داخل ذاكرة المتصفح مباشرة بعد تهيئتها
+                var script = document.createElement('script');
+                script.src = window.targetPayload;
+                script.onload = function() {
+                    document.getElementById("progress").innerHTML = "تم إرسال جولد هين بنجاح! انتظر الإشعار على الشاشة.";
+                };
+                script.onerror = function() {
+                    document.getElementById("progress").innerHTML = "خطأ في تحميل ملف payloads/goldhen.js";
+                };
+                document.body.appendChild(script);
+            } catch(e) {
+                document.getElementById("progress").innerHTML = "حدث تعليق في الذاكرة: " + e.message;
+            }
+        }, 500);
+    }
+</script>
 </body>
 </html>
