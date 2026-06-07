@@ -1,9 +1,10 @@
 CACHE MANIFEST
-# v6.0 - Luca Cafe Total Fixed Cache
+# v4.2 - Luca Cafe Total Fixed Cache
 
 CACHE:
 index.html
 6.72/6.72.html
+6.72/payloads/hen.js
 PSFree-main/psfree.html
 
 NETWORK:
