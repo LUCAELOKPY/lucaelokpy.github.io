@@ -1,94 +1,86 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" manifest="manifest.appcache">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوكا كافيه وبلايستيشن - قنا قوص</title>
-    
+    <meta charset="utf-8"/>
+    <title>لوكا كافيه وبلايستيشن - قائمة التعديلات</title>
     <style>
-        body { background-color: #0b0e14; color: #ffffff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
-        .container { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
-        .info-bar { background: rgba(22, 27, 34, 0.8); border: 1px solid #30363d; border-radius: 30px; padding: 10px 25px; margin-bottom: 20px; display: flex; gap: 30px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .header { text-align: center; margin-bottom: 25px; }
-        .header h1 { color: #ffb84d; font-size: 2.8rem; margin-bottom: 5px; }
-        .sub-owner { color: #00f0ff !important; font-weight: bold; font-size: 1.3rem; }
-        .selection-box { background-color: #161b22; border: 2px solid #30363d; border-radius: 12px; padding: 30px; width: 90%; max-width: 700px; text-align: center; }
-        .buttons-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-        .fw-card { background: #21262d; border: 1px solid #444c56; border-radius: 8px; padding: 20px; width: 240px; transition: transform 0.2s; }
-        .fw-card:hover { transform: translateY(-5px); border-color: #ffb84d; }
-        .btn-exploit { width: 100%; padding: 12px 20px; font-size: 1.1rem; font-weight: bold; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
-        .btn-672 { background: linear-gradient(45deg, #0052d4, #4364f7); }
-        .btn-900 { background: linear-gradient(45deg, #f12711, #f5af19); }
-        footer { background-color: #161b22; text-align: center; padding: 15px; color: #8b949e; border-top: 1px solid #30363d; margin-top: auto; }
-        .cache-notice { color: #00f0ff; margin-top: 15px; font-size: 1rem; font-weight: bold; }
+        body {
+            background-color: #0b0e14;
+            color: white;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 12px;
+            padding: 40px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .titlehead {
+            color: #ffb84d;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+        .button {
+            background: linear-gradient(45deg, #0052d4, #4364f7);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            padding: 18px 30px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 82, 212, 0.4);
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(45deg, #007bff, #00f0ff);
+        }
+        footer {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
     </style>
-
-    <script>
-        function updateClock() {
-            var now = new Date();
-            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('live-date').innerText = now.toLocaleDateString('ar-EG', options);
-            document.getElementById('live-time').innerText = now.toLocaleTimeString('ar-EG');
-        }
-
-        window.onload = function() {
-            updateClock();
-            setInterval(updateClock, 1000);
-            
-            if (window.applicationCache) {
-                window.applicationCache.addEventListener('cached', function() {
-                    document.getElementById('cache-status').innerText = "تم حفظ كاش النظام بالكامل أوفلاين! ✅";
-                }, false);
-                
-                window.applicationCache.addEventListener('updateready', function() {
-                    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
-                        window.applicationCache.swapCache();
-                        window.location.reload();
-                    }
-                }, false);
-            }
-        };
-
-        // التوجيه للمسار الفعلي الجديد داخل مجلد 6.72 لحل مشكلة 404
-        function launch_672() {
-            window.location.href = 'https://lucaelokpy.github.io/6.72/6.72.html';
-        }
-
-        function launch_900() {
-            window.location.href = 'PSFree-main/psfree.html'; 
-        }
-    </script>
 </head>
 <body>
 
-    <div class="container">
-        <div class="info-bar">
-            <div>📍 قنا - قوص</div>
-            <div>📅 <span id="live-date">...</span></div>
-            <div>⏰ <span id="live-time">...</span></div>
-        </div>
+<div class="container">
+    <h1 class="titlehead">لوكا كافيه وبلايستيشن 🎮</h1>
+    
+    <!-- أزرار التوجيه المباشرة والنظيفة -->
+    <button class="button" onclick="launch_672(); return false;">تفعيل سوفت وير 6.72</button>
+    <button class="button" onclick="launch_900(); return false;">تفعيل سوفت وير 9.00 (PSFree)</button>
 
-        <div class="header">
-            <h1>لوكا كافيه وبلايستيشن 🎮</h1>
-            <p class="sub-owner">إشراف وتطوير: حسين العقبي</p>
-        </div>
+    <footer>لوكا كافيه وبلايستيشن - قنا قوص &copy; 2026</footer>
+</div>
 
-        <div class="selection-box">
-            <div class="buttons-grid">
-                <div class="fw-card">
-                    <div style="margin-bottom:15px; font-weight:bold;">Firmware 6.72</div>
-                    <button class="btn-exploit btn-672" onclick="launch_672()">تفعيل سوفت 6.72</button>
-                </div>
+<script>
+    // الدوال المسؤولة عن التوجيه الصحيح بدون تكرار مسارات
+    function launch_672() {
+        window.location.href = '6.72/6.72.html';
+    }
 
-                <div class="fw-card">
-                    <div style="margin-bottom:15px; font-weight:bold;">Firmware 9.00</div>
-                    <button class="btn-exploit btn-900" onclick="launch_900()">تفعيل سوفت 9</button>
-                </div>
-            </div>
-            <div id="cache-status" class="cache-notice">جاري التحقق من حفظ ملفات الأوفلاين...</div>
-        </div>
-    </div>
+    function launch_900() {
+        window.location.href = 'PSFree-main/psfree.html';
+    }
+</script>
 
-    <footer>جميع الحقوق محفوظة &copy; 2026 | إدارة الأستاذ حسين العقبي</footer>
 </body>
 </html>
