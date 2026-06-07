@@ -34,28 +34,27 @@
             updateClock();
             setInterval(updateClock, 1000);
             
-            // كود تنبيه المستخدم عند اكتمال تحميل الكاش على البلايستيشن
+            // تنبيه حفظ الكاش للبلايستيشن
             if (window.applicationCache) {
                 window.applicationCache.addEventListener('cached', function() {
-                    alert("تم حفظ كاش الصفحة بنجاح! يمكنك الآن تشغيلها بدون إنترنت.");
+                    alert("تم حفظ كاش الصفحات (6.72 و 9.00) بنجاح! يمكنك تشغيل التعديل الآن بدون إنترنت.");
                 }, false);
                 
                 window.applicationCache.addEventListener('updateready', function() {
                     if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
                         window.applicationCache.swapCache();
-                        alert("تم تحديث الكاش بنجاح، جاري إعادة تحميل الصفحة...");
                         window.location.reload();
                     }
                 }, false);
             }
         };
 
-        // التوجه إلى موقع Karo المباشر لتعديل إصدار 6.72
+        // التوجه لملفات Karo لنسخة 6.72 المستضافة محلياً في موقعك لتشتغل بدون نت
         function launch_672() {
-            window.location.href = 'https://karo218.ir/';
+            window.location.href = 'karo-672/index.html';
         }
 
-        // التوجه لمسار تعديل ستايل 9.00 المسمى بـ psfree.html
+        // التوجه لمسار تعديل 9.00
         function launch_900() {
             window.location.href = 'PSFree-main/psfree.html'; 
         }
@@ -79,7 +78,7 @@
             <div class="buttons-grid">
                 <div class="fw-card">
                     <div style="margin-bottom:15px; font-weight:bold;">Firmware 6.72</div>
-                    <button class="btn-exploit btn-672" onclick="launch_672()">تفعيل 6.72</button>
+                    <button class="btn-exploit btn-672" onclick="launch_672()">تفعيل 6.72 (Karo)</button>
                 </div>
 
                 <div class="fw-card">
