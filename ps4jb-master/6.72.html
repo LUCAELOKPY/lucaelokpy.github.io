@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html manifest="Cache.manifest">
+<head>
+    <meta charset="utf-8" />
+    <title>PS4 6.72 Jailbreak - Local Host</title>
+    <style>
+        body {
+            background-color: #121622;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            direction: rtl;
+            padding: 30px;
+        }
+        h1 { color: #00bcd4; font-size: 28px; margin-bottom: 5px; }
+        h4 { color: #8a9fc4; margin-top: 0; font-weight: normal; }
+        .btn-container {
+            margin: 30px auto;
+            max-width: 750px;
+        }
+        .btn {
+            display: inline-block;
+            width: 200px;
+            padding: 15px;
+            margin: 10px;
+            background-color: #007acc;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            border: none;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #005999; }
+        .btn-jb { background-color: #e91e63; }
+        .btn-jb:hover { background-color: #c2185b; }
+        .btn-sub { background-color: #4caf50; }
+        .btn-sub:hover { background-color: #388e3c; }
+        
+        #progress {
+            font-size: 22px;
+            color: #ffeb3b;
+            margin: 20px;
+            font-weight: bold;
+        }
+        .instructions {
+            background-color: #1c2331;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: right;
+            max-width: 700px;
+            margin: 30px auto;
+            font-size: 15px;
+            line-height: 1.8;
+            border-right: 5px solid #00bcd4;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>مضيف بلايستيشن 4 محلي (سيرفر 6.72)</h1>
+    <h4>المسار الحالي: C:\PS4-Host\ps4jb-master</h4>
+    
+    <div id="progress">جاهز لتفعيل التعديلة</div>
+
+    <div class="btn-container">
+        <a id="jb-btn" class="btn btn-jb" href="jb.html">1. تفعيل الثغرة JB</a>
+        <a class="btn btn-sub" href="mira.html">2. تشغيل MIRA</a>
+        <a id="hen-btn" class="btn btn-sub" href="ps4-hen-vtx.html">تشغيل HEN VTX</a>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #2c3e50; margin: 30px 0;">
+
+    <h3>أدوات النظام الإضافية المتوفرة بمجلدك:</h3>
+    <div class="btn-container">
+        <a class="btn" href="ftp.html">سيرفر FTP</a>
+        <a class="btn" href="netcat.html">NETCAT</a>
+        <a class="btn" href="fakeusb.html">FAKEUSB</a>
+        <a class="btn" href="todex.html">ToDEX</a>
+    </div>
+
+    <div class="instructions">
+        <strong>💡 خطوات التفعيل الصحيحة داخل متصفح الـ PS4:</strong>
+        <ol>
+            <li>عند كتابة رقم الآي بي الخاص بالكمبيوتر في متصفح البلايستيشن لأول مرة، انتظر حتى تظهر لك رسالة <b>"Page Cached Successfully"</b> تلقائياً لتأكيد حفظ الصفحة أوفلاين.</li>
+            <li>اضغط على زر <b>"1. تفعيل الثغرة JB"</b>، سيقوم المتصفح بحقن الكود، ثم ستظهر رسالة "الذاكرة غير كافية"، اضغط موافق واترك الصفحة تعيد تحديث نفسها.</li>
+            <li>بعد أن تفتح الصفحة مجدداً، اضغط على زر <b>MIRA</b> أو <b>HEN VTX</b> لتفعيل قائمة الألعاب بنجاح.</li>
+        </ol>
+    </div>
+
+    <script>
+        // كود الكاش المعتاد لديك
+        window.applicationCache.ondownloading = function() {
+            document.getElementById("progress").innerHTML = "جاري حفظ ملفات التعديلة في ذاكرة الجهاز المؤقتة...";
+        };
+        window.applicationCache.onprogress = function(a) {
+            document.getElementById("progress").innerHTML = "جاري التحميل: " + (Math.round(100 * (a.loaded / a.total))) + "%";
+        };
+        window.applicationCache.oncached = window.applicationCache.onupdateready = function() {
+            document.getElementById("progress").innerHTML = "تم الحفظ بنجاح! يمكنك الآن فصل الإنترنت والتعديل أوفلاين.";
+            alert("تم تخزين الملفات بنجاح (Cached)!");
+        };
+
+        // --- كود التفعيل التلقائي الصامت الذكي ---
+        window.addEventListener("load", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // التأكد أن الطلب مدعوم تلقائياً من صفحة لوكا كافيه
+            if (urlParams.get('auto') === 'true' || localStorage.getItem("jb_running") === "true") {
+                let currentStep = localStorage.getItem("jb_step");
+
+                if (!currentStep || currentStep === "1") {
+                    // الخطوة الأولى: اضغط زر الثغرة JB تلقائياً بعد ثانية واحدة للاستقرار
+                    localStorage.setItem("jb_running", "true");
+                    localStorage.setItem("jb_step", "2"); // نجهز الخطوة القادمة بعد الكراش/الريلود
+                    setTimeout(() => {
+                        document.getElementById("jb-btn").click();
+                    }, 1000);
+                } 
+                else if (currentStep === "2") {
+                    // الخطوة الثانية: المتصفح عمل ريلود، الآن نضغط على تشغيل HEN VTX تلقائياً
+                    localStorage.setItem("jb_step", "3");
+                    setTimeout(() => {
+                        document.getElementById("hen-btn").click();
+                    }, 1500);
+                }
+                else if (currentStep === "3") {
+                    // الخطوة النهائية: إرسال إشارة نجاح للواجهة الأساسية وتنظيف التخزين
+                    localStorage.removeItem("jb_running");
+                    localStorage.removeItem("jb_step");
+                    window.parent.postMessage("jb_done", "*");
+                }
+            }
+        });
+    </script>
+</body>
+</html>
