@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html manifest="offlineCache672.manifest" lang="ar" dir="rtl">
+
+<head>
+<meta charset="utf-8">
+<title>LUCA PlayStation & Cafe - حسين العقبى</title>
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    background:#000 url('ps4.jpg') center center/cover no-repeat fixed;
+    font-family:Tahoma, Arial, sans-serif;
+}
+
+.button{
+    background:#003263;
+    border-radius:5px;
+    color:#fff;
+    padding:.5em;
+    text-decoration:none;
+    display:inline-table;
+    font-family:system-ui;
+    transition:.3s;
+}
+
+.button:hover{
+    background:#007bff;
+}
+
+.titlehead{
+    background:linear-gradient(90deg,#111,#c9a227);
+    border-radius:8px;
+    color:white;
+    padding:15px;
+    text-align:center;
+    font-family:system-ui;
+    box-shadow:0 0 15px rgba(201,162,39,.5);
+}
+
+.owner{
+    color:#ffd700;
+    font-size:20px;
+    margin-top:8px;
+}
+
+.footer{
+    text-align:center;
+    margin-top:30px;
+    color:#fff;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+window.onload=function(){
+    if(localStorage.Fail==null){
+        localStorage.Fail=0;
+        localStorage.Success=0;
+    }
+
+    document.getElementById("success").innerHTML="Success: "+localStorage.Success;
+    document.getElementById("fail").innerHTML="Fail: "+localStorage.Fail;
+}
+
+window.applicationCache.ondownloading=function(){
+    document.getElementById("progress").innerHTML="Page Caching Started!!";
+}
+
+window.applicationCache.onprogress=function(a){
+    document.getElementById("progress").innerHTML=
+    "Caching Status: "+
+    Math.round(100*(a.loaded/a.total))+
+    "% Completed";
+}
+
+window.applicationCache.oncached=function(){
+    document.getElementById("progress").innerHTML=
+    "Page Cached Successfully!!";
+}
+</script>
+
+<script src="common/functions.js"></script>
+<script>function print(){}</script>
+<script src="common/exploit.js"></script>
+<script src="jb/jb.js"></script>
+<script src="jb/oldjb.js"></script>
+
+<script src="payloads/app2usb.js"></script>
+<script src="payloads/backup.js"></script>
+<script src="payloads/preloader.js"></script>
+<script src="payloads/loader.js"></script>
+<script src="payloads/disableupdates.js"></script>
+<script src="payloads/dumper.js"></script>
+<script src="payloads/enableupdates.js"></script>
+<script src="payloads/fanthreshold.js"></script>
+<script src="payloads/ftp.js"></script>
+<script src="payloads/hen.js"></script>
+<script src="payloads/kerneldumper.js"></script>
+<script src="payloads/linuxloader.js"></script>
+<script src="payloads/mirahen.js"></script>
+<script src="payloads/goldhen.js"></script>
+<script src="payloads/miraunofficial.js"></script>
+<script src="payloads/ps4debug.js"></script>
+<script src="payloads/restore.js"></script>
+<script src="payloads/todex.js"></script>
+<script src="payloads/webrte.js"></script>
+
+<h1 id="progress" class="titlehead">
+🎮 LUCA PlayStation & Cafe
+<div class="owner">حسين العقبى</div>
+</h1>
+
+<br>
+
+<div style="text-align:center">
+<span id="success" style="background:limegreen;color:black;padding:8px;border-radius:5px;"></span>
+&nbsp;&nbsp;
+<span id="fail" style="background:firebrick;color:black;padding:8px;border-radius:5px;"></span>
+</div>
+
+<br><br>
+
+<div style="text-align:center">
+
+<a href="#" class="button" onclick="load_OLDJB();return false;">Old Exploit</a>
+
+<a href="#" class="button" onclick="load_Both();return false;">
+Exploit + GoldHEN
+</a>
+
+<a href="#" class="button" onclick="load_JB();return false;">
+New Exploit
+</a>
+
+</div>
+
+<div class="footer">
+<hr>
+<h3>LUCA PlayStation & Cafe</h3>
+<p>إدارة وتشغيل أجهزة البلايستيشن والكافيه</p>
+<p>حسين العقبى © 2026</p>
+</div>
+
+</body>
+</html>

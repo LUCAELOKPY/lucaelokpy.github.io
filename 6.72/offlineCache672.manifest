@@ -1,0 +1,31 @@
+CACHE MANIFEST
+# LUCA Edition v2.0
+
+6.72.html
+ps4.jpg
+common/functions.js
+common/exploit.js
+jb/jb.js
+jb/oldjb.js
+payloads/mirahen.js
+payloads/goldhen.js
+payloads/miraunofficial.js
+payloads/preloader.js
+payloads/loader.js
+payloads/app2usb.js
+payloads/backup.js
+payloads/disableupdates.js
+payloads/dumper.js
+payloads/enableupdates.js
+payloads/ftp.js
+payloads/kerneldumper.js
+payloads/restore.js
+payloads/linuxloader.js
+payloads/todex.js
+payloads/webrte.js
+payloads/hen.js
+payloads/fanthreshold.js
+payloads/ps4debug.js
+
+NETWORK:
+*
