@@ -1,12 +1,14 @@
 CACHE MANIFEST
-# v1.0 - 2026-06-07
+# v3.2 - كاش لوكا كافيه الكلي المجمع 2026
 
 CACHE:
-# صفحات الـ HTML
 index.html
-
-# صفحات التعديل التي يستدعيها الكود
+6.72.html
 PSFree-main/psfree.html
+common/functions.js
+common/exploit.js
+jb/jb.js
+payloads/goldhen.js
 
 NETWORK:
 *
