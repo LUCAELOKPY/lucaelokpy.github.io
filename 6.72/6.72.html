@@ -2,148 +2,217 @@
 <html manifest="offlineCache672.manifest" lang="ar" dir="rtl">
 
 <head>
-<meta charset="utf-8">
-<title>LUCA PlayStation & Cafe - حسين العقبى</title>
+    <meta charset="utf-8">
+    <title>LUCA PlayStation & Cafe - حسين العقبى</title>
 
-<style>
-body{
-    margin:0;
-    padding:20px;
-    background:#000 url('ps4.jpg') center center/cover no-repeat fixed;
-    font-family:Tahoma, Arial, sans-serif;
-}
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0d1117 url('ps4.jpg') center center/cover no-repeat fixed;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            color: #fff;
+        }
 
-.button{
-    background:#003263;
-    border-radius:5px;
-    color:#fff;
-    padding:.5em;
-    text-decoration:none;
-    display:inline-table;
-    font-family:system-ui;
-    transition:.3s;
-}
+        /* تنسيق الهيدر أو العنوان الرئيسي */
+        .titlehead {
+            background: linear-gradient(135deg, #1f2937, #111827);
+            border: 2px solid #ffd700;
+            border-radius: 12px;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
 
-.button:hover{
-    background:#007bff;
-}
+        .owner {
+            color: #ffd700;
+            font-size: 22px;
+            margin-top: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
 
-.titlehead{
-    background:linear-gradient(90deg,#111,#c9a227);
-    border-radius:8px;
-    color:white;
-    padding:15px;
-    text-align:center;
-    font-family:system-ui;
-    box-shadow:0 0 15px rgba(201,162,39,.5);
-}
+        /* عداد النجاح والفشل */
+        .counter-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
 
-.owner{
-    color:#ffd700;
-    font-size:20px;
-    margin-top:8px;
-}
+        .counter-box {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            min-width: 120px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
 
-.footer{
-    text-align:center;
-    margin-top:30px;
-    color:#fff;
-    font-size:14px;
-}
-</style>
+        .counter-success {
+            background-color: #2e7d32;
+            color: #fff;
+            margin-left: 15px;
+        }
+
+        .counter-fail {
+            background-color: #c62828;
+            color: #fff;
+        }
+
+        /* منطقة الأزرار وتنسيقها */
+        .section-title {
+            text-align: center;
+            color: #ffd700;
+            margin-top: 30px;
+            font-size: 18px;
+            border-bottom: 1px dashed #ffd700;
+            padding-bottom: 5px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .button {
+            background: linear-gradient(180deg, #004080, #002244);
+            border: 1px solid #0056b3;
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all .3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+            min-width: 160px;
+        }
+
+        .button:hover {
+            background: linear-gradient(180deg, #007bff, #0056b3);
+            border-color: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
+        }
+
+        /* زر مميز لتشغيل التعديلة الأساسية المدمجة */
+        .button.primary {
+            background: linear-gradient(180deg, #b8860b, #8b6508);
+            border-color: #ffd700;
+        }
+        .button.primary:hover {
+            background: linear-gradient(180deg, #ffd700, #b8860b);
+            color: #000;
+        }
+
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+        .footer hr {
+            border: 0;
+            border-top: 1px solid #1f2937;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+    </style>
 </head>
 
 <body>
 
-<script>
-window.onload=function(){
-    if(localStorage.Fail==null){
-        localStorage.Fail=0;
-        localStorage.Success=0;
-    }
+    <h1 id="progress" class="titlehead">
+        🎮 LUCA Ultimate Enterprise Edition 2026
+        <div class="owner">حسين العقبى</div>
+    </h1>
 
-    document.getElementById("success").innerHTML="Success: "+localStorage.Success;
-    document.getElementById("fail").innerHTML="Fail: "+localStorage.Fail;
-}
+    <div class="counter-container">
+        <span id="success" class="counter-box counter-success">Success: 0</span>
+        <span id="fail" class="counter-box counter-fail">Fail: 0</span>
+    </div>
 
-window.applicationCache.ondownloading=function(){
-    document.getElementById("progress").innerHTML="Page Caching Started!!";
-}
+    <div class="section-title">إطلاق ثغرة الجيلبريك (6.72)</div>
+    <div class="btn-container">
+        <a href="#" class="button" onclick="load_OLDJB(); return false;">Old Exploit</a>
+        <a href="#" class="button primary" onclick="load_Both(); return false;">Exploit + GoldHEN</a>
+        <a href="#" class="button" onclick="load_JB(); return false;">New Exploit</a>
+    </div>
 
-window.applicationCache.onprogress=function(a){
-    document.getElementById("progress").innerHTML=
-    "Caching Status: "+
-    Math.round(100*(a.loaded/a.total))+
-    "% Completed";
-}
+    <div class="section-title">الأدوات المساعدة والـ Payloads</div>
+    <div class="btn-container">
+        <a href="#" class="button" onclick="triggerFunction('hen'); return false;">HEN</a>
+        <a href="#" class="button" onclick="triggerFunction('goldhen'); return false;">GoldHEN</a>
+        <a href="#" class="button" onclick="triggerFunction('mirahen'); return false;">Mira HEN</a>
+        <a href="#" class="button" onclick="triggerFunction('ftp'); return false;">FTP Server</a>
+        <a href="#" class="button" onclick="triggerFunction('app2usb'); return false;">App2USB</a>
+        <a href="#" class="button" onclick="triggerFunction('dumper'); return false;">Game Dumper</a>
+        <a href="#" class="button" onclick="triggerFunction('disableupdates'); return false;">Disable Updates</a>
+        <a href="#" class="button" onclick="triggerFunction('enableupdates'); return false;">Enable Updates</a>
+        <a href="#" class="button" onclick="triggerFunction('fanthreshold'); return false;">Fan Threshold</a>
+        <a href="#" class="button" onclick="triggerFunction('ps4debug'); return false;">PS4 Debug</a>
+        <a href="#" class="button" onclick="triggerFunction('webrte'); return false;">WebRTE (Cheats)</a>
+        <a href="#" class="button" onclick="triggerFunction('todex'); return false;">ToDEX</a>
+        <a href="#" class="button" onclick="triggerFunction('backup'); return false;">Backup Saves</a>
+        <a href="#" class="button" onclick="triggerFunction('restore'); return false;">Restore Saves</a>
+    </div>
 
-window.applicationCache.oncached=function(){
-    document.getElementById("progress").innerHTML=
-    "Page Cached Successfully!!";
-}
-</script>
+    <div class="footer">
+        <hr>
+        <h3>LUCA PlayStation & Cafe</h3>
+        <p>النظام المتكامل لإدارة وتشغيل أجهزة البلايستيشن والكافيه</p>
+        <p>حسين العقبى © 2026</p>
+    </div>
 
-<script src="common/functions.js"></script>
-<script>function print(){}</script>
-<script src="common/exploit.js"></script>
-<script src="jb/jb.js"></script>
-<script src="jb/oldjb.js"></script>
+    <script>
+        window.onload = function() {
+            if (localStorage.Fail == null) {
+                localStorage.Fail = 0;
+                localStorage.Success = 0;
+            }
+            document.getElementById("success").innerHTML = "Success: " + localStorage.Success;
+            document.getElementById("fail").innerHTML = "Fail: " + localStorage.Fail;
+        }
 
-<script src="payloads/app2usb.js"></script>
-<script src="payloads/backup.js"></script>
-<script src="payloads/preloader.js"></script>
-<script src="payloads/loader.js"></script>
-<script src="payloads/disableupdates.js"></script>
-<script src="payloads/dumper.js"></script>
-<script src="payloads/enableupdates.js"></script>
-<script src="payloads/fanthreshold.js"></script>
-<script src="payloads/ftp.js"></script>
-<script src="payloads/hen.js"></script>
-<script src="payloads/kerneldumper.js"></script>
-<script src="payloads/linuxloader.js"></script>
-<script src="payloads/mirahen.js"></script>
-<script src="payloads/goldhen.js"></script>
-<script src="payloads/miraunofficial.js"></script>
-<script src="payloads/ps4debug.js"></script>
-<script src="payloads/restore.js"></script>
-<script src="payloads/todex.js"></script>
-<script src="payloads/webrte.js"></script>
+        // التعامل مع الكاش الاوفلاين
+        if (window.applicationCache) {
+            window.applicationCache.ondownloading = function() {
+                document.getElementById("progress").innerHTML = "⏳ جاري بدء تخزين الصفحة أوفلاين (Caching Started)...";
+            }
 
-<h1 id="progress" class="titlehead">
-🎮 LUCA PlayStation & Cafe
-<div class="owner">حسين العقبى</div>
-</h1>
+            window.applicationCache.onprogress = function(a) {
+                document.getElementById("progress").innerHTML =
+                    "⏳ جاري الحفظ أوفلاين: " + Math.round(100 * (a.loaded / a.total)) + "%";
+            }
 
-<br>
+            window.applicationCache.oncached = function() {
+                document.getElementById("progress").innerHTML = "✔️ تم حفظ الصفحة بنجاح! يمكنك الآن تشغيلها بدون إنترنت.";
+            }
+            
+            window.applicationCache.onupdateready = function() {
+                window.applicationCache.swapCache();
+                location.reload();
+            }
+        }
+    </script>
 
-<div style="text-align:center">
-<span id="success" style="background:limegreen;color:black;padding:8px;border-radius:5px;"></span>
-&nbsp;&nbsp;
-<span id="fail" style="background:firebrick;color:black;padding:8px;border-radius:5px;"></span>
-</div>
-
-<br><br>
-
-<div style="text-align:center">
-
-<a href="#" class="button" onclick="load_OLDJB();return false;">Old Exploit</a>
-
-<a href="#" class="button" onclick="load_Both();return false;">
-Exploit + GoldHEN
-</a>
-
-<a href="#" class="button" onclick="load_JB();return false;">
-New Exploit
-</a>
-
-</div>
-
-<div class="footer">
-<hr>
-<h3>LUCA PlayStation & Cafe</h3>
-<p>إدارة وتشغيل أجهزة البلايستيشن والكافيه</p>
-<p>حسين العقبى © 2026</p>
-</div>
+    <script src="common/functions.js"></script>
+    <script>function print() {}</script>
+    <script src="common/exploit.js"></script>
+    <script src="jb/jb.js"></script>
+    <script src="jb/oldjb.js"></script>
 
 </body>
 </html>
