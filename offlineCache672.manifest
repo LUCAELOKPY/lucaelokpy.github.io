@@ -1,1 +1,12 @@
+Plaintext
+CACHE MANIFEST
+# v3.0 - كاش تشغيل لوكا كافيه الذهبي 2026
 
+index672.html
+common/functions.js
+common/exploit.js
+jb/jb.js
+payloads/goldhen.js
+
+NETWORK:
+*
