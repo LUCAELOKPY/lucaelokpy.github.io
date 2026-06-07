@@ -1,11 +1,12 @@
 CACHE MANIFEST
-# v4.0 - Luca Cafe Fixed Offline
+# v5.0 - Luca Cafe Local Paths Fixed
 
+CACHE:
 6.72.html
-https://lucaelokpy.github.io/common/functions.js
-https://lucaelokpy.github.io/common/exploit.js
-https://lucaelokpy.github.io/jb/jb.js
-https://lucaelokpy.github.io/payloads/goldhen.js
+../common/functions.js
+../common/exploit.js
+../jb/jb.js
+../payloads/goldhen.js
 
 NETWORK:
 *
