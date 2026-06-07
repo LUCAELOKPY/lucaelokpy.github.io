@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" manifest="manifest.appcache">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,21 @@
         window.onload = function() {
             updateClock();
             setInterval(updateClock, 1000);
+            
+            // كود تنبيه المستخدم عند اكتمال تحميل الكاش على البلايستيشن
+            if (window.applicationCache) {
+                window.applicationCache.addEventListener('cached', function() {
+                    alert("تم حفظ كاش الصفحة بنجاح! يمكنك الآن تشغيلها بدون إنترنت.");
+                }, false);
+                
+                window.applicationCache.addEventListener('updateready', function() {
+                    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                        window.applicationCache.swapCache();
+                        alert("تم تحديث الكاش بنجاح، جاري إعادة تحميل الصفحة...");
+                        window.location.reload();
+                    }
+                }, false);
+            }
         };
 
         // التوجه إلى موقع Karo المباشر لتعديل إصدار 6.72
