@@ -1,116 +1,95 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" manifest="offlineCache672.manifest">
+<html lang="ar" dir="rtl" manifest="manifest.appcache">
 <head>
-    <meta charset="utf-8"/>
-    <title>تفعيل جيلبريك 6.72 - لوكا كافيه</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوكا كافيه وبلايستيشن - قنا قوص</title>
+    
     <style>
-        body {
-            background-color: #0b0e14;  
-            color: white;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .container {
-            background-color: #161b22;
-            border: 2px solid #30363d;
-            border-radius: 12px;
-            padding: 40px;
-            width: 90%;
-            max-width: 500px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-
-        .titlehead {
-            color: #ffb84d;  
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .status-box {
-            background-color: #003263;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-        }
-
-        .button {
-            background: linear-gradient(45deg, #0052d4, #4364f7);  
-            border: none;
-            border-radius: 6px;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .button:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(45deg, #007bff, #00f0ff);
-        }
-
-        .stats {
-            margin-top: 25px;
-            display: flex;
-            justify-content: space-around;
-            font-size: 1rem;
-        }
-
-        .success-stat { color: #2ecc71; font-weight: bold; }
-        .fail-stat { color: #e74c3c; font-weight: bold; }
+        body { background-color: #0b0e14; color: #ffffff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
+        .container { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; }
+        .info-bar { background: rgba(22, 27, 34, 0.8); border: 1px solid #30363d; border-radius: 30px; padding: 10px 25px; margin-bottom: 20px; display: flex; gap: 30px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .header { text-align: center; margin-bottom: 25px; }
+        .header h1 { color: #ffb84d; font-size: 2.8rem; margin-bottom: 5px; }
+        .sub-owner { color: #00f0ff !important; font-weight: bold; font-size: 1.3rem; }
+        .selection-box { background-color: #161b22; border: 2px solid #30363d; border-radius: 12px; padding: 30px; width: 90%; max-width: 700px; text-align: center; }
+        .buttons-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .fw-card { background: #21262d; border: 1px solid #444c56; border-radius: 8px; padding: 20px; width: 240px; transition: transform 0.2s; }
+        .fw-card:hover { transform: translateY(-5px); border-color: #ffb84d; }
+        .btn-exploit { width: 100%; padding: 12px 20px; font-size: 1.1rem; font-weight: bold; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+        .btn-672 { background: linear-gradient(45deg, #0052d4, #4364f7); }
+        .btn-900 { background: linear-gradient(45deg, #f12711, #f5af19); }
+        footer { background-color: #161b22; text-align: center; padding: 15px; color: #8b949e; border-top: 1px solid #30363d; margin-top: auto; }
+        .cache-notice { color: #00f0ff; margin-top: 15px; font-size: 1rem; font-weight: bold; }
     </style>
+
+    <script>
+        function updateClock() {
+            var now = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('live-date').innerText = now.toLocaleDateString('ar-EG', options);
+            document.getElementById('live-time').innerText = now.toLocaleTimeString('ar-EG');
+        }
+
+        window.onload = function() {
+            updateClock();
+            setInterval(updateClock, 1000);
+            
+            if (window.applicationCache) {
+                window.applicationCache.addEventListener('cached', function() {
+                    document.getElementById('cache-status').innerText = "تم حفظ كاش النظام بالكامل أوفلاين! ✅";
+                }, false);
+                
+                window.applicationCache.addEventListener('updateready', function() {
+                    if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                        window.applicationCache.swapCache();
+                        window.location.reload();
+                    }
+                }, false);
+            }
+        };
+
+        // التعديل الجديد: التوجه للمسار الجديد داخل المجلد الفرعي 6.72
+        function launch_672() {
+            window.location.href = '6.72/6.72.html';
+        }
+
+        // التوجه لمجلد 9.00 المحلي
+        function launch_900() {
+            window.location.href = 'PSFree-main/psfree.html'; 
+        }
+    </script>
 </head>
 <body>
 
-<div class="container">
-    <h1 class="titlehead">تعديل بلايستيشن 6.72</h1>
-    
-    <div id="progress" class="status-box">جاري فحص ملفات التشغيل...</div>
+    <div class="container">
+        <div class="info-bar">
+            <div>📍 قنا - قوص</div>
+            <div>📅 <span id="live-date">...</span></div>
+            <div>⏰ <span id="live-time">...</span></div>
+        </div>
 
-    <button class="button" onclick="load_Both(); return false">تفعيل GoldHEN المباشر</button>
+        <div class="header">
+            <h1>لوكا كافيه وبلايستيشن 🎮</h1>
+            <p class="sub-owner">إشراف وتطوير: حسين العقبي</p>
+        </div>
 
-    <div class="stats">
-        <span id="success" class="success-stat">نجاح: 0</span>
-        <span id="fail" class="fail-stat">فشل: 0</span>
+        <div class="selection-box">
+            <div class="buttons-grid">
+                <div class="fw-card">
+                    <div style="margin-bottom:15px; font-weight:bold;">Firmware 6.72</div>
+                    <button class="btn-exploit btn-672" onclick="launch_672()">تفعيل سوفت 6.72</button>
+                </div>
+
+                <div class="fw-card">
+                    <div style="margin-bottom:15px; font-weight:bold;">Firmware 9.00</div>
+                    <button class="btn-exploit btn-900" onclick="launch_900()">تفعيل سوفت 9</button>
+                </div>
+            </div>
+            <div id="cache-status" class="cache-notice">جاري التحقق من حفظ ملفات الأوفلاين...</div>
+        </div>
     </div>
-</div>
 
-<script>
-    window.onload = function(e){
-        if(localStorage.Fail==null){localStorage.Fail=0;localStorage.Success=0;}
-        document.getElementById("success").innerHTML="نجاح: "+localStorage.Success;
-        document.getElementById("fail").innerHTML="فشل: "+localStorage.Fail;
-    }
-    window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="جاري بدء حفظ كاش التعديل..."};
-    window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML="جاري التحميل: "+(Math.round(100*(a.loaded/a.total)))+"%"};
-    window.applicationCache.oncached=function(){
-        document.getElementById("progress").innerHTML="تم حفظ التعديل بنجاح! افصل النت وشغل أوفلاين.";
-    };
-    window.applicationCache.onupdateready=function(){
-        window.applicationCache.swapCache();
-        window.location.reload();
-    };
-</script>
-
-<script src="common/functions.js"></script>
-<script>function print(){}</script>
-<script src="common/exploit.js"></script>
-<script src="jb/jb.js"></script>
-<script src="payloads/goldhen.js"></script>
-
+    <footer>جميع الحقوق محفوظة &copy; 2026 | إدارة الأستاذ حسين العقبي</footer>
 </body>
 </html>
