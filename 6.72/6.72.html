@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl" manifest="offlineCache672.manifest">
 <head>
     <meta charset="utf-8"/>
-    <title>تفعيل جيلبريك 6.72 - لوكا كافيه</title>
+    <title>تفعيل جيلبريك 6.72 - لوكا كافيه وبلايستيشن</title>
     <style>
         body {
             background-color: #0b0e14;  
@@ -30,8 +30,15 @@
 
         .titlehead {
             color: #ffb84d;  
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .sub-title {
+            color: #00f0ff;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: bold;
         }
 
         .status-box {
@@ -39,7 +46,9 @@
             padding: 15px;
             border-radius: 6px;
             margin-bottom: 25px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 1px solid #0052d4;
         }
 
         .button {
@@ -47,15 +56,16 @@
             border: none;
             border-radius: 6px;
             color: white;
-            padding: 15px 30px;
+            padding: 18px 30px;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             display: block;
             width: 100%;
             box-sizing: border-box;
             cursor: pointer;
             transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 10px rgba(0, 82, 212, 0.4);
         }
 
         .button:hover {
@@ -64,20 +74,29 @@
         }
 
         .stats {
-            margin-top: 25px;
+            margin-top: 30px;
             display: flex;
             justify-content: space-around;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            border-top: 1px solid #30363d;
+            padding-top: 15px;
         }
 
         .success-stat { color: #2ecc71; font-weight: bold; }
         .fail-stat { color: #e74c3c; font-weight: bold; }
+        
+        footer {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #8b949e;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1 class="titlehead">تعديل بلايستيشن 6.72</h1>
+    <h1 class="titlehead">لوكا كافيه وبلايستيشن 🎮</h1>
+    <div class="sub-title">نظام تفعيل تعديلة سوفت وير 6.72</div>
     
     <div id="progress" class="status-box">جاري فحص ملفات التشغيل...</div>
 
@@ -87,6 +106,8 @@
         <span id="success" class="success-stat">نجاح: 0</span>
         <span id="fail" class="fail-stat">فشل: 0</span>
     </div>
+    
+    <footer>لوكا كافيه وبلايستيشن - قنا قوص &copy; 2026</footer>
 </div>
 
 <script>
@@ -96,7 +117,7 @@
         document.getElementById("fail").innerHTML="فشل: "+localStorage.Fail;
     }
     window.applicationCache.ondownloading=function(){document.getElementById("progress").innerHTML="جاري بدء حفظ كاش التعديل..."};
-    window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML="جاري التحميل: "+(Math.round(100*(a.loaded/a.total)))+"%"};
+    window.applicationCache.onprogress=function(a){document.getElementById("progress").innerHTML="جاري التحميل الأوفلاين: "+(Math.round(100*(a.loaded/a.total)))+"%"};
     window.applicationCache.oncached=function(){
         document.getElementById("progress").innerHTML="تم حفظ التعديل بنجاح! افصل النت وشغل أوفلاين.";
     };
@@ -106,12 +127,12 @@
     };
 </script>
 
-<!-- استدعاء السكربتات من الخارج باستعمال النقطتين للخروج من المجلد -->
-<script src="../common/functions.js"></script>
+<!-- استدعاء مباشر بالروابط الكاملة لتفادي حظر متصفح الـ PS4 والبدء فوراً -->
+<script src="https://lucaelokpy.github.io/common/functions.js"></script>
 <script>function print(){}</script>
-<script src="../common/exploit.js"></script>
-<script src="../jb/jb.js"></script>
-<script src="../payloads/goldhen.js"></script>
+<script src="https://lucaelokpy.github.io/common/exploit.js"></script>
+<script src="https://lucaelokpy.github.io/jb/jb.js"></script>
+<script src="https://lucaelokpy.github.io/payloads/goldhen.js"></script>
 
 </body>
 </html>
