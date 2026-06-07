@@ -1,9 +1,13 @@
 CACHE MANIFEST
-# v4.2 - Luca Cafe Total Fixed Cache
+# v4.3 - Added Hen Path
 
 CACHE:
 index.html
 6.72/6.72.html
+6.72/common/functions.js
+6.72/common/exploit.js
+6.72/jb/jb.js
+6.72/payloads/goldhen.js
 6.72/payloads/hen.js
 PSFree-main/psfree.html
 
