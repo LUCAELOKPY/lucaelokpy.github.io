@@ -20,6 +20,7 @@
         .btn-672 { background: linear-gradient(45deg, #0052d4, #4364f7); }
         .btn-900 { background: linear-gradient(45deg, #f12711, #f5af19); }
         footer { background-color: #161b22; text-align: center; padding: 15px; color: #8b949e; border-top: 1px solid #30363d; margin-top: auto; }
+        .cache-notice { color: #00f0ff; margin-top: 15px; font-size: 1rem; font-weight: bold; }
     </style>
 
     <script>
@@ -34,10 +35,9 @@
             updateClock();
             setInterval(updateClock, 1000);
             
-            // تنبيه حفظ الكاش للبلايستيشن
             if (window.applicationCache) {
                 window.applicationCache.addEventListener('cached', function() {
-                    alert("تم حفظ كاش الصفحات (6.72 و 9.00) بنجاح! يمكنك تشغيل التعديل الآن بدون إنترنت.");
+                    document.getElementById('cache-status').innerText = "تم حفظ كاش النظام بالكامل (6.72 و 9.00) أوفلاين! ✅";
                 }, false);
                 
                 window.applicationCache.addEventListener('updateready', function() {
@@ -49,12 +49,12 @@
             }
         };
 
-        // التوجه لملفات Karo لنسخة 6.72 المستضافة محلياً في موقعك لتشتغل بدون نت
+        // التعديل الجديد: التوجه مباشرة إلى صفحة 6.72.html المرفوعة في المستودع
         function launch_672() {
-            window.location.href = 'karo-672/index.html';
+            window.location.href = '6.72.html';
         }
 
-        // التوجه لمسار تعديل 9.00
+        // التوجه لمجلد 9.00 المحلي
         function launch_900() {
             window.location.href = 'PSFree-main/psfree.html'; 
         }
@@ -78,14 +78,15 @@
             <div class="buttons-grid">
                 <div class="fw-card">
                     <div style="margin-bottom:15px; font-weight:bold;">Firmware 6.72</div>
-                    <button class="btn-exploit btn-672" onclick="launch_672()">تفعيل 6.72 (Karo)</button>
+                    <button class="btn-exploit btn-672" onclick="launch_672()">تفعيل 6.72 الاقتصادي</button>
                 </div>
 
                 <div class="fw-card">
                     <div style="margin-bottom:15px; font-weight:bold;">Firmware 9.00</div>
-                    <button class="btn-exploit btn-900" onclick="launch_900()">تفعيل 9.00</button>
+                    <button class="btn-exploit btn-900" onclick="launch_900()">تفعيل 9.00 الذكي</button>
                 </div>
             </div>
+            <div id="cache-status" class="cache-notice">جاري التحقق من حفظ ملفات الأوفلاين...</div>
         </div>
     </div>
 
