@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" manifest="offlineCache672.manifest">
 <head>
@@ -8,85 +7,213 @@
 <title>LUCA PlayStation & Cafe - حسين العقبى</title>
 
 <style>
+/* تصفير الإعدادات الافتراضية وجلب خطوط متناسقة */
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-body{
-    background:#0b0e14;
-    color:#fff;
-    font-family:'Segoe UI',Tahoma,sans-serif;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+body {
+    background: radial-gradient(circle at center, #0d121f 0%, #05070b 100%);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
 }
 
-.container{
-    width:100%;
-    max-width:550px;
-    background:#161b22;
-    border:2px solid #30363d;
-    border-radius:15px;
-    padding:40px;
-    text-align:center;
-    box-shadow:0 0 25px rgba(0,0,0,.5);
+/* خلفية متحركة تحاكي أمواج البلايستيشن Dynamic Waves */
+body::before, body::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(0, 240, 255, 0.03);
+    filter: blur(80px);
+    z-index: 0;
+    animation: wave 12s infinite alternate ease-in-out;
+}
+body::after {
+    background: rgba(255, 215, 0, 0.02);
+    right: -100px;
+    bottom: -100px;
+    animation-delay: -6s;
+}
+@keyframes wave {
+    0% { transform: translate(-50px, -50px) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.2); }
 }
 
-.titlehead{
-    font-size:2rem;
-    color:#ffd700;
-    margin-bottom:10px;
+/* الحاوية الرئيسية بأسلوب الزجاج الفاخر Glassmorphism */
+.container {
+    width: 100%;
+    max-width: 650px;
+    background: rgba(16, 22, 32, 0.65);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 24px;
+    padding: 45px 35px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    position: relative;
 }
 
-.owner{
-    color:#00f0ff;
-    font-size:1rem;
-    margin-bottom:25px;
+/* رموز البلايستيشن الشهيرة كخلفية خافتة مدمجة */
+.ps-shapes {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-size: 14px;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.07);
+    font-weight: bold;
 }
 
-.subtitle{
-    color:#8b949e;
-    margin-bottom:30px;
-    font-size:15px;
+/* الهيدر والعناوين باللون الذهبي والنيون */
+.titlehead {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #ffd700;
+    text-shadow: 0 0 15px rgba(255, 214, 0, 0.3);
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
 }
 
-.button{
-    display:block;
-    width:100%;
-    border:none;
-    cursor:pointer;
-    margin-bottom:15px;
-    padding:18px;
-    font-size:18px;
-    font-weight:bold;
-    border-radius:8px;
-    color:white;
-    background:linear-gradient(45deg,#0052d4,#4364f7);
-    transition:.3s;
-    box-shadow:0 4px 10px rgba(0,82,212,.4);
+.owner {
+    color: #00f0ff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
 }
 
-.button:hover{
-    transform:translateY(-3px);
-    background:linear-gradient(45deg,#007bff,#00f0ff);
+.subtitle {
+    color: #8b949e;
+    margin-bottom: 35px;
+    font-size: 14px;
+    position: relative;
+}
+.subtitle::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd700, transparent);
+    margin: 12px auto 0 auto;
 }
 
-.footer{
-    margin-top:25px;
-    color:#8b949e;
-    font-size:13px;
-    border-top:1px solid #30363d;
-    padding-top:15px;
+/* شبكة كروت الاختيارات المستوحاة من تصفح ألعاب PS4 */
+.launcher-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
 }
 
-.version{
-    margin-top:10px;
-    color:#2ecc71;
-    font-weight:bold;
+@media(max-width: 500px) {
+    .launcher-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* أزرار على شكل كروت ألعاب تفاعلية مضيئة */
+.btn-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px 20px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير الإضاءة الداخلية الممررة للرادار */
+.btn-card::before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: linear-gradient(135deg, rgba(0,240,255,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.btn-card .icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    transition: transform 0.3s;
+}
+
+.btn-card .btn-title {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.btn-card .btn-desc {
+    color: #8b949e;
+    font-size: 12px;
+}
+
+/* تأثيرات التركيز والتحليق Hover & Focus المستوحاة من نظام السوني */
+.btn-card:hover {
+    transform: translateY(-5px);
+    background: rgba(13, 27, 42, 0.8);
+    border-color: #00f0ff;
+    box-shadow: 0 10px 30px rgba(0, 240, 255, 0.25);
+}
+.btn-card:hover::before {
+    opacity: 1;
+}
+.btn-card:hover .icon {
+    transform: scale(1.15);
+}
+
+/* كارت خاص بنظام الـ 9.00 لتمييز النيون فيه بلون مختلف أو إضاءة ذهبية */
+.btn-card.gold-spec:hover {
+    border-color: #ffd700;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
+
+/* الفوتر والتذييل المستوحى من النظام الرسمي */
+.footer {
+    margin-top: 30px;
+    color: #5865f2;
+    font-size: 13px;
+    border-top: 1px solid rgba(48, 54, 61, 0.5);
+    padding-top: 20px;
+    color: #7d8590;
+    line-height: 1.6;
+}
+
+.version {
+    display: inline-block;
+    background: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    border: 1px solid rgba(46, 204, 113, 0.3);
+    letter-spacing: 0.5px;
 }
 </style>
 
@@ -94,49 +221,46 @@ body{
 <body>
 
 <div class="container">
+    <div class="ps-shapes">△ ◯ ✕ ▢</div>
 
     <h1 class="titlehead">🎮 LUCA PlayStation & Cafe</h1>
+    <div class="owner">حسين العقبى</div>
+    <div class="subtitle">منصة تشغيل الجيلبريك والتعديلات الذاتية</div>
 
-    <div class="owner">
-        حسين العقبى
+    <div class="launcher-grid">
+        
+        <div class="btn-card" onclick="launch_672()">
+            <div class="icon">💿</div>
+            <div class="btn-title">Firmware 6.72</div>
+            <div class="btn-desc">التعديل المستقر المستند على الميرا والهن</div>
+        </div>
+
+        <div class="btn-card gold-spec" onclick="launch_900()">
+            <div class="icon">⚡</div>
+            <div class="btn-title">Firmware 9.00</div>
+            <div class="btn-desc">تشغيل فوري عالي السرعة (PSFree)</div>
+        </div>
+
     </div>
 
-    <div class="subtitle">
-        منصة تشغيل الجيلبريك والتعديلات
-    </div>
-
-    <button class="button" onclick="launch_672()">
-        PS4 Firmware 6.72
-    </button>
-
-    <button class="button" onclick="launch_900()">
-        PS4 Firmware 9.00 (PSFree)
-    </button>
-
-    <div class="version">
-        LUCA Edition 2026
-    </div>
+    <div class="version">LUCA OS SYSTEM v2026.1</div>
 
     <div class="footer">
-        لوكا كافيه وبلايستيشن - قنا قوص
+        مركز لوكا كافيه وبلايستيشن - قنا، قوص
         <br>
-        © 2026 Hussein Elokpy
+        © 2026 Hussein Elokpy | All Rights Reserved.
     </div>
-
 </div>
 
 <script>
-
 function launch_672(){
-    window.location.href="6.72/6.72.html";
+    window.location.href = "6.72/6.72.html";
 }
 
 function launch_900(){
-    window.location.href="PSFree-main/psfree.html";
+    window.location.href = "PSFree-main/psfree.html";
 }
-
 </script>
 
 </body>
 </html>
-```
