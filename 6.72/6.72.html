@@ -1,138 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PS4 6.72</title>
-<link rel="shortcut icon" href="favicon.ico">
+<title>LUCA PlayStation & Cafe - 6.72</title>
 
 <style>
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#111;
-    color:#fff;
-    margin:20px;
-}
-a{
-    color:#00bfff;
-    margin-right:15px;
-}
-.language{
-    display:none;
-}
-#progress{
-    margin:15px 0;
-    color:#00ff00;
-}
+    :root { --gold: #ffd700; --cyan: #00f0ff; --bg: #0d121f; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: #fff; margin: 0; padding: 20px; display: flex; justify-content: center; }
+    .container { max-width: 700px; width: 100%; background: rgba(16, 22, 32, 0.8); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 1px solid rgba(255, 215, 0, 0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    
+    h1 { color: var(--gold); text-align: center; margin-bottom: 5px; }
+    .owner { color: var(--cyan); text-align: center; font-weight: bold; margin-bottom: 25px; }
+    
+    .lang-bar { text-align: center; margin-bottom: 20px; }
+    .lang-bar a { color: #8b949e; margin: 0 10px; text-decoration: none; font-size: 0.9em; }
+    
+    .language { display: none; background: rgba(255,255,255,0.03); padding: 15px; border-radius: 10px; }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin-top: 25px; }
+    .btn { background: #1a2233; padding: 15px; text-align: center; border: 1px solid #30363d; border-radius: 12px; color: #fff; text-decoration: none; transition: 0.3s; font-weight: bold; }
+    .btn:hover { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0,240,255,0.3); transform: translateY(-3px); }
+    
+    #progress { color: var(--cyan); text-align: center; margin-top: 20px; }
 </style>
 
 <script>
-document.cookie = "kex=1";
-
-function changeLanguage(lang){
-    document.querySelectorAll('.language').forEach(function(el){
-        el.style.display='none';
-    });
-
-    var target=document.getElementById(lang);
-    if(target){
-        target.style.display='block';
+    document.cookie = "kex=1";
+    function changeLanguage(lang){
+        document.querySelectorAll('.language').forEach(el => el.style.display='none');
+        var target = document.getElementById(lang);
+        if(target) target.style.display='block';
     }
-}
-
-window.onload=function(){
-    changeLanguage('english');
-
-    document.getElementById("progress").innerHTML =
-        "<h3>Page Loaded Successfully</h3>";
-};
+    window.onload = () => { changeLanguage('english'); document.getElementById("progress").innerHTML = "● النظام جاهز للتشغيل"; };
 </script>
-
 </head>
 
 <body>
 
-<p>
-    <a href="#" onclick="changeLanguage('english');return false;">English</a>
-    <a href="#" onclick="changeLanguage('russian');return false;">Русский</a>
-</p>
+<div class="container">
+    <h1>🎮 LUCA PlayStation & Cafe</h1>
+    <div class="owner">حسين العقبى - نظام 6.72</div>
 
-<div id="english" class="language">
+    <div class="lang-bar">
+        <a href="#" onclick="changeLanguage('english');return false;">English</a> | 
+        <a href="#" onclick="changeLanguage('russian');return false;">Русский</a>
+    </div>
 
-<h3>READ THIS CAREFULLY BEFORE PROCEEDING</h3>
+    <div id="english" class="language" style="display:block">
+        <h3>INSTRUCTIONS</h3>
+        <p>This page is intended for <b>firmware 6.72</b> only.</p>
+        <ul>
+            <li>Select your preferred payload from the grid below.</li>
+            <li>If the exploit fails or freezes, reboot the console and try again.</li>
+        </ul>
+    </div>
 
-<p>
-<b>
-This page is intended for firmware 6.72 only.
-</b>
-</p>
+    <div id="russian" class="language">
+        <h3>ИНСТРУКЦИЯ</h3>
+        <p>Страница предназначена для <b>прошивки 6.72</b>.</p>
+        <ul>
+            <li>Выберите пейлоад из списка ниже.</li>
+            <li>Если система зависла, просто перезагрузите консоль.</li>
+        </ul>
+    </div>
 
-<ol>
-<li>
-Select the payload you want to load from the links below.
-</li>
+    <div id="progress"></div>
 
-<li>
-If the exploit fails, reboot the console and try again.
-</li>
-
-<li>
-If the system freezes, restart and retry.
-</li>
-</ol>
-
+    <div class="grid">
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=mira/mira2.js">JB+MIRA</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=ps4-hen-vtx.js">JB+HEN</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=linux/1gb.js">LINUX 1GB</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=linux/3gb.js">LINUX 3GB</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=ftp.js">FTP</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=fakeusb.js">FAKEUSB</a>
+        <a class="btn" href="payload.html">NETCAT (Legacy)</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js">NETCAT</a>
+    </div>
 </div>
-
-<div id="russian" class="language">
-
-<h3>ВНИМАТЕЛЬНО ПРОЧИТАЙТЕ ИНСТРУКЦИЮ</h3>
-
-<p>
-<b>
-Эта страница предназначена только для прошивки 6.72.
-</b>
-</p>
-
-<ol>
-<li>
-Выберите нужный пейлоад из списка ниже.
-</li>
-
-<li>
-Если взлом не удался, перезагрузите консоль.
-</li>
-
-<li>
-Если система зависла, перезагрузите приставку.
-</li>
-</ol>
-
-</div>
-
-<div id="progress"></div>
-
-<hr>
-
-<h3>Payloads</h3>
-
-<p>
-<a href="payload.html#p0=mira/mira.js&p1=mira/mira2.js">JB+MIRA</a><br><br>
-
-<a href="payload.html#p0=mira/mira.js&p1=ps4-hen-vtx.js">JB+HEN</a><br><br>
-
-<a href="payload.html#p0=mira/mira.js&p1=linux/1gb.js">JB+LINUX (VRAM 1GB)</a><br><br>
-
-<a href="payload.html#p0=mira/mira.js&p1=linux/3gb.js">JB+LINUX (VRAM 3GB)</a><br><br>
-
-<a href="payload.html#p0=mira/mira.js&p1=ftp.js">JB+FTP</a><br><br>
-
-<a href="payload.html#p0=mira/mira.js&p1=fakeusb.js">JB+FAKEUSB</a><br><br>
-
-<a href="payload.html">JB+NETCAT (LEGACY)</a><br><br>
-
-<a href="payload.html#p0=mira/mira.js">JB+NETCAT</a>
-</p>
 
 </body>
 </html>
