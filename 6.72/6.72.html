@@ -3,48 +3,57 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUCA PlayStation & Cafe - 6.72</title>
+    <title>LUCA PlayStation & Cafe</title>
     <style>
         :root {
             --ps-blue: #0070cc;
-            --ps-black: #070707;
             --gold: #ffd700;
+            --bg-dark: #050505;
         }
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #000;
+            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000 100%);
             color: #fff;
             margin: 0;
-            padding: 40px;
-            display: flex;
-            justify-content: center;
             min-height: 100vh;
+            display: flex;
+            align-items: center; /* توسيط عمودي */
+            justify-content: center; /* توسيط أفقي */
+            padding: 20px;
         }
-        .container { width: 100%; max-width: 800px; }
-        h1 { color: var(--gold); font-size: 2.5em; margin-bottom: 5px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .owner { color: var(--ps-blue); font-weight: bold; margin-bottom: 30px; font-size: 1.2em; }
+        .main-card {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            text-align: center;
+        }
+        h1 { color: var(--gold); margin: 0; font-size: 2em; text-transform: uppercase; letter-spacing: 2px; }
+        .subtitle { color: var(--ps-blue); margin-bottom: 30px; font-weight: bold; }
         
-        .lang-bar { margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .lang-bar a { color: #aaa; margin: 0 10px; text-decoration: none; }
-
-        .language { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; display: none; }
-        
-        .grid { display: flex; flex-direction: column; gap: 15px; margin-top: 40px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
         .btn {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
             text-decoration: none;
             color: #fff;
-            font-size: 1.2em;
+            border: 1px solid #333;
+            border-radius: 12px;
+            transition: all 0.3s;
             font-weight: bold;
-            border-right: 5px solid var(--ps-blue);
-            transition: all 0.2s ease;
-            display: block;
-            text-transform: uppercase;
         }
-        .btn:hover { background: var(--ps-blue); transform: scale(1.02); padding-right: 50px; }
+        .btn:hover { background: var(--ps-blue); border-color: var(--ps-blue); transform: translateY(-5px); }
         
-        #progress { color: var(--ps-blue); margin-top: 20px; font-weight: bold; }
+        .lang-switch { margin-bottom: 20px; font-size: 0.8em; }
+        .lang-switch a { color: #666; margin: 0 5px; text-decoration: none; }
+        
+        .language { display: none; line-height: 1.6; font-size: 0.95em; }
+        #progress { margin-top: 25px; color: var(--ps-blue); font-size: 0.9em; border-top: 1px solid #333; padding-top: 15px; }
     </style>
 
     <script>
@@ -54,54 +63,42 @@
             var target = document.getElementById(lang);
             if(target) target.style.display='block';
         }
-        window.onload = function() {
-            changeLanguage('english');
-            document.getElementById("progress").innerHTML = "● LUCA PLAYSTATION & CAFE - READY";
-            document.body.style.overflow = "hidden"; // محاكاة واجهة النظام
-        };
+        window.onload = () => { changeLanguage('english'); document.getElementById("progress").innerHTML = "● SYSTEM READY - LUCA CAFE"; };
     </script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>🎮 LUCA PlayStation & Cafe</h1>
-        <div class="owner">حسين العقبى - نظام 6.72</div>
 
-        <div class="lang-bar">
-            <a href="#" onclick="changeLanguage('english');return false;">English</a> | 
-            <a href="#" onclick="changeLanguage('russian');return false;">Русский</a>
-        </div>
+<div class="main-card">
+    <h1>LUCA</h1>
+    <div class="subtitle">PlayStation & Cafe - حسين العقبى</div>
 
-        <div id="english" class="language" style="display:block">
-            <h3>INSTRUCTIONS</h3>
-            <p>This page is intended for <b>firmware 6.72</b> only.</p>
-            <ul>
-                <li>Select your payload from the list below.</li>
-                <li>If the exploit fails or freezes, reboot the console and try again.</li>
-            </ul>
-        </div>
-
-        <div id="russian" class="language">
-            <h3>ИНСТРУКЦИЯ</h3>
-            <p>Страница предназначена для <b>прошивки 6.72</b>.</p>
-            <ul>
-                <li>Выберите пейлоад из списка ниже.</li>
-                <li>Если система зависла, просто перезагрузите консоль.</li>
-            </ul>
-        </div>
-
-        <div id="progress"></div>
-
-        <div class="grid">
-            <a class="btn" href="payload.html#p0=mira/mira.js&p1=mira/mira2.js">JB+MIRA</a>
-            <a class="btn" href="payload.html#p0=mira/mira.js&p1=ps4-hen-vtx.js">JB+HEN</a>
-            <a class="btn" href="payload.html#p0=mira/mira.js&p1=linux/1gb.js">LINUX 1GB</a>
-            <a class="btn" href="payload.html#p0=mira/mira.js&p1=linux/3gb.js">LINUX 3GB</a>
-            <a class="btn" href="payload.html#p0=mira/mira.js&p1=ftp.js">FTP</a>
-            <a class="btn" href="payload.html#p0=mira/mira.js&p1=fakeusb.js">FAKEUSB</a>
-            <a class="btn" href="payload.html">NETCAT (LEGACY)</a>
-            <a class="btn" href="payload.html#p0=mira/mira.js">NETCAT</a>
-        </div>
+    <div class="lang-switch">
+        <a href="#" onclick="changeLanguage('english');return false;">English</a> | 
+        <a href="#" onclick="changeLanguage('russian');return false;">Русский</a>
     </div>
+
+    <div id="english" class="language" style="display:block">
+        <p>Welcome to the 6.72 Jailbreak portal. Please select your desired operation from the list below to proceed.</p>
+    </div>
+
+    <div id="russian" class="language">
+        <p>Добро пожаловать в портал взлома 6.72. Пожалуйста, выберите нужную операцию из списка ниже.</p>
+    </div>
+
+    <div class="grid">
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=mira/mira2.js">JB+MIRA</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=ps4-hen-vtx.js">JB+HEN</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=linux/1gb.js">LINUX 1GB</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=linux/3gb.js">LINUX 3GB</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=ftp.js">FTP</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js&p1=fakeusb.js">FAKEUSB</a>
+        <a class="btn" href="payload.html">NETCAT LEGACY</a>
+        <a class="btn" href="payload.html#p0=mira/mira.js">NETCAT</a>
+    </div>
+
+    <div id="progress"></div>
+</div>
+
 </body>
 </html>
