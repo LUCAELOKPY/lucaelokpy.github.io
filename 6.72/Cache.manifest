@@ -2,7 +2,7 @@ CACHE MANIFEST
 # random: ee9328bd806628e0c1c25c2904b2b549
 
 CACHE:
-6.72.html
+6.72/6.72.html
 payload.html
 common/exploit.js
 common/helpers.js
