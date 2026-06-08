@@ -1,205 +1,68 @@
-<!DOCTYPE html>
-<html manifest="Cache.manifest" dir="rtl" lang="ar">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>لوكا بلاي ستيشن وكافيه - 6.72</title>
-    <link rel="shortcut icon" href="favicon.ico">
+<html>
+<body onload="go()">
+<script>
+/* صمام الأمان: إذا تم إعادة فتح الصفحة بعد تهنيج، يرجع فوراً لصفحة التعديل */
+if(document.cookie.indexOf('kex=0') >= 0)
+    document.location.href = '6.72.html';
+document.cookie = 'kex=0';
+</script>
+<script>
+function print(){}
+</script>
+<script src="common/exploit.js"></script>
+<script src="common/helpers.js"></script>
+<script src="common/malloc.js"></script>
+<script src="common/rop.js"></script>
+<script src="common/syscalls.js"></script>
+<script src="common/syscalls2.js"></script>
+<script src="jb.js"></script>
+<script>
+function getHashParams()
+{
+    var ans = {};
+    var p = document.location.hash.substr(1).split("&");
+    for(var i = 0; i < p.length; i++)
+    {
+        var kv = p[i].split('=');
+        var k = kv.shift();
+        ans[k] = decodeURIComponent(kv.join('='));
+    }
+    return ans;
+}
 
-    <style>
-        /* إعدادات الخلفية والألوان الأساسية (أسود وذهبي) */
-        body {
-            margin: 0;
-            background: #0a0a0a;
-            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-            text-align: center;
-            min-height: 100vh;
-        }
+function loadScript(path)
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', path, false);
+    xhr.send('');
+    eval.call(window, xhr.responseText);
+}
 
-        /* تأثير الزجاج (Glassmorphism) للترويسة */
-        .header {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            padding: 30px 20px;
-            border-bottom: 2px solid #d4af37;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
-        }
-
-        .header h1 {
-            margin: 0;
-            color: #d4af37; /* لون ذهبي */
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
-            font-size: 46px;
-            letter-spacing: 1px;
-        }
-
-        .header p {
-            margin-top: 10px;
-            color: #e5e7eb;
-            font-size: 18px;
-        }
-
-        .languages {
-            margin: 20px;
-        }
-
-        .languages a {
-            color: #d4af37;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-            font-size: 16px;
-            transition: 0.3s;
-        }
-
-        .languages a:hover {
-            text-shadow: 0 0 10px #d4af37;
-            color: #fff;
-        }
-
-        .content {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        /* تنسيق أزرار التفعيل (تأثير النيون) */
-        .payloads {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .payloads a {
-            display: inline-block;
-            padding: 15px 25px;
-            background: rgba(30, 30, 30, 0.7);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            color: #d4af37;
-            text-decoration: none;
-            border: 1px solid rgba(212, 175, 55, 0.5);
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 17px;
-            transition: all 0.3s ease;
-            min-width: 150px;
-        }
-
-        .payloads a:hover {
-            background: #d4af37;
-            color: #000;
-            border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.3);
-            transform: translateY(-3px);
-        }
-
-        #progress {
-            margin: 25px;
-            color: #d4af37;
-            font-size: 22px;
-            text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-        }
-
-        .footer {
-            margin-top: 40px;
-            padding: 20px;
-            color: #888;
-            font-size: 14px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="header">
-        <h1>لوكا بلاي ستيشن وكافيه</h1>
-        <p>إدارة: حسين العقبي | نظام تشغيل PS4 6.72</p>
-    </div>
-
-    <script>
-        document.cookie = 'kex=1';
-
-        window.applicationCache.ondownloading = function () {
-            alert("بدأ تحميل النظام في الذاكرة (Caching)!");
-        };
-
-        window.applicationCache.onprogress = function (a) {
-            document.getElementById("progress").innerHTML =
-                "<h3>جاري التحميل الأوفلاين: " +
-                (Math.round(100 * (a.loaded / a.total))) +
-                "% </h3>";
-        };
-
-        window.applicationCache.oncached =
-        window.applicationCache.onupdateready = function () {
-            alert("تم حفظ الصفحة بنجاح! يمكنك الآن العمل بدون إنترنت.");
-        };
-
-        window.onload = function () {
-            // جعل اللغة العربية هي الافتراضية
-            changeLanguage('arabic');
-        };
-
-        function changeLanguage(lang) {
-            var elements = document.querySelectorAll('.language');
-            for (var i = 0; i < elements.length; i++) {
-                elements[i].style.display = 'none';
-            }
-
-            if (document.getElementById(lang)) {
-                document.getElementById(lang).style.display = 'block';
-            }
-        }
-    </script>
-
-    <div class="languages">
-        <a href="#" onclick="changeLanguage('arabic');return false;">العربية</a> |
-        <a href="#" onclick="changeLanguage('english');return false;">English</a>
-    </div>
-
-    <div class="content">
-
-        <div id="arabic" class="language">
-            <h2>بوابة تفعيل الثغرة</h2>
-            <p style="color: #bbb; line-height: 1.6;">
-                هذا النظام مخصص حصرياً لـ <b>لوكا بلاي ستيشن وكافيه</b>.<br>
-                متوافق فقط مع أجهزة البلايستيشن 4 ذات التحديث <b>6.72</b>.
-            </p>
-        </div>
-
-        <div id="english" class="language" style="display:none;" dir="ltr">
-            <h2>Exploit Host Portal</h2>
-            <p style="color: #bbb; line-height: 1.6;">
-                Custom System For <b>LOKA PlayStation & Cafe</b>.<br>
-                Works only on PlayStation 4 Firmware <b>6.72</b>.
-            </p>
-        </div>
-
-        <div id="progress"></div>
-
-        <div class="payloads">
-            <a href="payload.html#p0=mira/mira.js&p1=mira/mira2.js">JB + MIRA</a>
-            <a href="payload.html#p0=mira/mira.js&p1=ps4-hen-vtx.js">JB + HEN</a>
-            <a href="payload.html#p0=mira/mira.js&p1=linux/1gb.js">Linux 1GB</a>
-            <a href="payload.html#p0=mira/mira.js&p1=linux/3gb.js">Linux 3GB</a>
-            <a href="payload.html#p0=mira/mira.js&p1=ftp.js">FTP Server</a>
-            <a href="payload.html#p0=mira/mira.js&p1=fakeusb.js">Fake USB</a>
-            <a href="payload.html">NetCat (Legacy)</a>
-            <a href="payload.html#p0=mira/mira.js">NetCat</a>
-        </div>
-
-    </div>
-
-    <div class="footer">
-        © 2026 جميع الحقوق محفوظة - لوكا بلاي ستيشن وكافيه | حسين العقبي
-    </div>
-
+(function()
+{
+    var hp = getHashParams();
+    if('p0' in hp)
+        loadScript(hp['p0']);
+    if('p1' in hp)
+        loadScript(hp['p1']);
+})();
+</script>
+<script src="netcat.js"></script>
+<script>
+/* فحص النتيجة النهائية للجيلبريك */
+if(main_ret == 179 /* تم الاختراق بالفعل */ || main_ret == 0 /* نجاح التفعيل */)
+{
+    alert("You're all set!");
+    read_ptr_at(0); // إنهيار آمن للمتصفح لتنظيف الرامات
+}
+else
+{
+    // إعادة ضبط صمام الأمان فوراً للسماح بالدخول مجدداً
+    document.cookie = 'kex=1'; 
+    
+    // العودة الفورية والصامتة إلى صفحة تعديل الـ 6.72 الفاخرة بدون أي مشاكل
+    window.location.href = '6.72.html';
+}
+</script>
 </body>
 </html>
