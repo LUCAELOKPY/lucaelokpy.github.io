@@ -2,7 +2,7 @@ CACHE MANIFEST
 # random: ee9328bd806628e0c1c25c2904b2b549
 
 CACHE:
-index.html
+6.72.html
 payload.html
 common/exploit.js
 common/helpers.js
@@ -14,9 +14,6 @@ jb.js
 netcat.js
 mira/mira.js
 mira/mira2.js
-ps4-hen-vtx.js
-ftp.js
-fakeusb.js
 linux/1gb.js
 linux/3gb.js
 
